@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a00"/>
+      <stop offset="100%" stop-color="#2d1500"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a1800"/>
+      <stop offset="100%" stop-color="#1a0f00"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Laptop lid -->
+  <rect x="65" y="55" width="270" height="185" rx="10" fill="url(#lid)" stroke="#ff6600" stroke-width="2.5"/>
+  <!-- Screen -->
+  <rect x="78" y="68" width="244" height="159" rx="4" fill="#0a0500"/>
+  <!-- Windows-style taskbar at bottom of screen -->
+  <rect x="78" y="210" width="244" height="17" rx="0 0 4 4" fill="#1a0f00"/>
+  <rect x="86" y="213" width="12" height="11" rx="2" fill="#ff6600" opacity="0.6"/>
+  <rect x="106" y="215" width="40" height="7" rx="2" fill="#ff6600" opacity="0.3"/>
+  <!-- Desktop grid -->
+  <rect x="88" y="78" width="224" height="125" rx="2" fill="#0d0800"/>
+  <!-- Desktop icons -->
+  <rect x="96" y="86" width="24" height="24" rx="4" fill="#ff6600" opacity="0.6"/>
+  <rect x="96" y="116" width="24" height="24" rx="4" fill="#ffa000" opacity="0.5"/>
+  <rect x="96" y="146" width="24" height="24" rx="4" fill="#ff6600" opacity="0.4"/>
+  <!-- Browser window -->
+  <rect x="132" y="82" width="176" height="118" rx="5" fill="#1a0f00" stroke="#ff6600" stroke-width="1" opacity="0.8"/>
+  <rect x="138" y="88" width="164" height="10" rx="3" fill="#0a0500"/>
+  <rect x="144" y="90" width="80" height="6" rx="2" fill="#ff6600" opacity="0.4"/>
+  <rect x="142" y="104" width="154" height="6" rx="2" fill="#ff6600" opacity="0.5"/>
+  <rect x="142" y="116" width="120" height="4" rx="2" fill="#ff6600" opacity="0.3"/>
+  <rect x="142" y="126" width="140" height="4" rx="2" fill="#ff6600" opacity="0.25"/>
+  <rect x="142" y="140" width="154" height="48" rx="3" fill="#100800" opacity="0.8"/>
+  <rect x="148" y="148" width="60" height="30" rx="4" fill="#ff6600" opacity="0.2"/>
+  <rect x="216" y="148" width="72" height="12" rx="2" fill="#ff6600" opacity="0.4"/>
+  <rect x="216" y="166" width="60" height="8" rx="2" fill="#ff6600" opacity="0.25"/>
+  <!-- Hinge -->
+  <rect x="65" y="238" width="270" height="4" rx="0" fill="#ff6600" opacity="0.2"/>
+  <!-- Base -->
+  <rect x="50" y="242" width="300" height="26" rx="0 0 10 10" fill="url(#lid)" stroke="#ff6600" stroke-width="1.5"/>
+  <!-- Touchpad -->
+  <rect x="155" y="246" width="90" height="18" rx="5" fill="#100800" stroke="#ff6600" stroke-width="1" opacity="0.8"/>
+  <text x="200" y="308" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#ff6600" text-anchor="middle" letter-spacing="3">LAPTOP</text>
+  <text x="200" y="330" font-family="Arial,sans-serif" font-size="12" fill="#aa5500" text-anchor="middle">RTX 4060 · OLED Display</text>
+</svg>

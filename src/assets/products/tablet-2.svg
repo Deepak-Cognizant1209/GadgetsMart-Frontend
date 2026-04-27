@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a0d2a"/>
+      <stop offset="100%" stop-color="#2d1b50"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a1a3a"/>
+      <stop offset="100%" stop-color="#1a0f28"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Tablet body landscape-ish -->
+  <rect x="110" y="35" width="180" height="295" rx="16" fill="url(#body)" stroke="#ff6600" stroke-width="2.5"/>
+  <!-- Screen -->
+  <rect x="122" y="62" width="156" height="228" rx="4" fill="#0a0614"/>
+  <!-- Screen content - gradient display -->
+  <rect x="128" y="68" width="144" height="80" rx="3" fill="#1a0f28" opacity="0.9"/>
+  <text x="200" y="112" font-family="Arial,sans-serif" font-weight="700" font-size="15" fill="#ff6600" text-anchor="middle">Samsung</text>
+  <text x="200" y="130" font-family="Arial,sans-serif" font-size="11" fill="#ffaa55" text-anchor="middle">Galaxy Tab S9</text>
+  <!-- Content grid -->
+  <rect x="128" y="156" width="68" height="55" rx="4" fill="#1a0f28"/>
+  <rect x="204" y="156" width="68" height="55" rx="4" fill="#1a0f28"/>
+  <rect x="128" y="219" width="68" height="55" rx="4" fill="#1a0f28"/>
+  <rect x="204" y="219" width="68" height="55" rx="4" fill="#1a0f28"/>
+  <text x="162" y="188" font-size="22" text-anchor="middle" fill="#ff6600" opacity="0.7" font-family="Arial">▶</text>
+  <text x="238" y="188" font-size="22" text-anchor="middle" fill="#ff6600" opacity="0.5" font-family="Arial">♪</text>
+  <text x="162" y="250" font-size="22" text-anchor="middle" fill="#ff6600" opacity="0.6" font-family="Arial">✉</text>
+  <text x="238" y="250" font-size="22" text-anchor="middle" fill="#ff6600" opacity="0.4" font-family="Arial">★</text>
+  <!-- S-Pen indicator -->
+  <rect x="283" y="140" width="7" height="80" rx="3.5" fill="#ff6600" opacity="0.7"/>
+  <!-- Home bar -->
+  <rect x="168" y="322" width="64" height="5" rx="2.5" fill="#ff6600" opacity="0.55"/>
+  <!-- Camera -->
+  <circle cx="200" cy="48" r="5" fill="#ff6600" opacity="0.5"/>
+  <circle cx="200" cy="48" r="2.5" fill="#ff6600" opacity="0.8"/>
+  <text x="200" y="372" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#ff6600" text-anchor="middle" letter-spacing="3">TABLET</text>
+</svg>

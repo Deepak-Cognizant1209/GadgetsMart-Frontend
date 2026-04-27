@@ -1,0 +1,19 @@
+.auth-page { min-height: calc(100vh - 64px); display: flex; align-items: center; justify-content: center; padding: 32px 16px; background: radial-gradient(ellipse at top, #1d3557 0%, var(--gm-bg) 70%); }
+.auth-card { width: 100%; max-width: 440px; background: var(--gm-bg-card); border: 1px solid var(--gm-border); border-radius: 12px; padding: 40px 36px; box-shadow: var(--gm-shadow-card); }
+.auth-logo { display: flex; align-items: center; gap: 8px; font-size: 1.3rem; font-weight: 700; color: var(--gm-text); margin-bottom: 24px; .material-icons { color: #00bcd4; font-size: 28px; } .accent { color: #00bcd4; } }
+.auth-title { font-size: 1.6rem; margin: 0 0 6px; color: var(--gm-text); }
+.auth-subtitle { color: var(--gm-text-sub); margin: 0 0 24px; font-size: 0.9rem; }
+.error-banner { display: flex; align-items: center; gap: 8px; background: rgba(244,67,54,0.12); border: 1px solid rgba(244,67,54,0.3); color: #f44336; padding: 10px 14px; border-radius: 6px; font-size: 0.875rem; margin-bottom: 16px; .material-icons { font-size: 18px; } }
+.full-width { width: 100%; margin-bottom: 4px; }
+.form-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.forgot-link { color: #00bcd4; font-size: 0.85rem; text-decoration: none; &:hover { text-decoration: underline; } }
+.submit-btn { width: 100%; padding: 12px; background: transparent; color: #00bcd4; border: 1.5px solid #00bcd4; border-radius: 6px; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: background 0.18s, color 0.18s; display: flex; align-items: center; justify-content: center; letter-spacing: 0.01em; &:hover:not(:disabled) { background: #00bcd4; color: #fff; } &:disabled { border-color: var(--gm-border); color: var(--gm-text-muted); cursor: not-allowed; } }
+.demo-hint { display: flex; align-items: center; gap: 6px; background: rgba(0,188,212,0.08); border: 1px solid rgba(0,188,212,0.2); color: var(--gm-text-sub); padding: 10px 14px; border-radius: 6px; font-size: 0.8rem; margin-top: 16px; .material-icons { font-size: 16px; color: #00bcd4; } strong { color: var(--gm-text); } }
+.auth-switch { text-align: center; color: var(--gm-text-sub); font-size: 0.875rem; margin: 20px 0 0; a { color: #00bcd4; text-decoration: none; &:hover { text-decoration: underline; } } }
+
+// ── Light theme override ───────────────────────────────────────
+:host-context([data-theme="light"]) {
+  .auth-page { background: radial-gradient(ellipse at top, #b8d4e8 0%, var(--gm-bg) 70%); }
+  .auth-card { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
+  .submit-btn:disabled { background: #e0e7ef; color: #8c959f; }
+}

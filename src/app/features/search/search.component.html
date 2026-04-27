@@ -1,0 +1,46 @@
+<div class="search-page">
+  <div class="container">
+    <div class="search-header">
+      <h1 class="search-title">
+        Search Results
+        @if (query) { <span class="query-text">for "{{ query }}"</span> }
+      </h1>
+      <div class="sort-wrap">
+        <span class="material-icons sort-icon">sort</span>
+        <select class="sort-select" [(ngModel)]="sortBy" (ngModelChange)="search()">
+          @for (opt of sortOptions; track opt.value) {
+            <option [value]="opt.value">{{ opt.label }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    @if (loading) {
+      <div class="product-grid">
+        @for (s of skeletons; track $index) { <app-skeleton-card /> }
+      </div>
+    } @else if (products.length === 0) {
+      <app-empty-state
+        icon="search_off"
+        title="No results found"
+        [message]="'No products match &quot;' + query + '&quot;'"
+        ctaLabel="Browse All Products"
+        (ctaClick)="query = ''; search()">
+      </app-empty-state>
+      <div class="browse-cta">
+        <a routerLink="/category/Laptops" class="cat-link">Laptops</a>
+        <a routerLink="/category/Tablets" class="cat-link">Tablets</a>
+        <a routerLink="/category/Headphones" class="cat-link">Headphones</a>
+        <a routerLink="/category/Mouse" class="cat-link">Mouse</a>
+        <a routerLink="/category/Speakers" class="cat-link">Speakers</a>
+      </div>
+    } @else {
+      <p class="result-count">{{ products.length }} products found</p>
+      <div class="product-grid">
+        @for (product of products; track product.id) {
+          <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
+        }
+      </div>
+    }
+  </div>
+</div>

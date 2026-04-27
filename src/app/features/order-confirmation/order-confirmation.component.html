@@ -1,0 +1,78 @@
+<div class="confirm-page">
+  <div class="container">
+    @if (order) {
+      <div class="confirm-card">
+        <div class="checkmark-wrap">
+          <div class="checkmark-circle">
+            <span class="material-icons checkmark-icon">check</span>
+          </div>
+        </div>
+        <h1 class="confirm-title">Order Confirmed!</h1>
+        <p class="confirm-subtitle">Thank you for your purchase. Your order has been placed successfully.</p>
+
+        <div class="order-meta">
+          <div class="meta-item">
+            <span class="meta-label">Order ID</span>
+            <span class="meta-value">#{{ order.id }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Placed On</span>
+            <span class="meta-value">{{ order.createdAt | date:'mediumDate' }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="status-badge">{{ order.status }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Estimated Delivery</span>
+            <span class="meta-value delivery">{{ estimatedDelivery | date:'EEEE, MMMM d' }}</span>
+          </div>
+        </div>
+
+        <div class="items-section">
+          <h3>Items Ordered</h3>
+          @for (item of order.items; track item.productId) {
+            <div class="order-item">
+              <div class="item-info">
+                <p class="item-name">{{ item.productName }}</p>
+                <p class="item-meta">{{ item.color }} × {{ item.quantity }}</p>
+              </div>
+              <span class="item-total">{{ item.price * item.quantity | currency:'INR':'symbol':'1.0-0' }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="totals-section">
+          <div class="total-row"><span>Subtotal</span><span>{{ order.subtotal | currency:'INR':'symbol':'1.0-0' }}</span></div>
+          <div class="total-row"><span>Shipping</span><span class="free">FREE</span></div>
+          <div class="total-row"><span>Tax</span><span>{{ order.tax | currency:'INR':'symbol':'1.0-0' }}</span></div>
+          <div class="total-row grand"><span>Total</span><span class="grand-price">{{ order.total | currency:'INR':'symbol':'1.0-0' }}</span></div>
+        </div>
+
+        <div class="ship-section">
+          <h3>Shipping Address</h3>
+          <div class="address">
+            <p>{{ order.shippingAddress.fullName }}</p>
+            <p>{{ order.shippingAddress.street }}</p>
+            <p>{{ order.shippingAddress.city }}, {{ order.shippingAddress.state }} {{ order.shippingAddress.zipCode }}</p>
+            <p>{{ order.shippingAddress.country }}</p>
+          </div>
+        </div>
+
+        <div class="confirm-actions">
+          <a routerLink="/account" class="btn-track">
+            <span class="material-icons">local_shipping</span> Track Order
+          </a>
+          <a routerLink="/" class="btn-shop">
+            <span class="material-icons">storefront</span> Continue Shopping
+          </a>
+        </div>
+      </div>
+    } @else {
+      <div class="loading">
+        <span class="material-icons spin">hourglass_empty</span>
+        <p>Loading order details…</p>
+      </div>
+    }
+  </div>
+</div>

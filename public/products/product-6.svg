@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c0c0b8"/><stop offset="100%" stop-color="#909090"/></linearGradient>
+    <linearGradient id="base" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#a8a8a0"/><stop offset="100%" stop-color="#c4c4bc"/></linearGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0%" stop-color="#0d1525"/><stop offset="100%" stop-color="#020408"/></linearGradient>
+    <filter id="ds"><feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#000" flood-opacity="0.6"/></filter>
+  </defs>
+  <!-- Dell XPS 15 - platinum silver, open laptop -->
+  <!-- Lid -->
+  <rect x="58" y="25" width="284" height="190" rx="6" fill="url(#lid)" filter="url(#ds)"/>
+  <!-- Screen (InfinityEdge - ultra thin bezels) -->
+  <rect x="64" y="30" width="272" height="181" rx="4" fill="#0c0c0e"/>
+  <!-- OLED screen -->
+  <rect x="67" y="33" width="266" height="175" rx="3" fill="url(#scr)"/>
+  <!-- Webcam top center (very small) -->
+  <circle cx="200" cy="29" r="2.5" fill="#0c0c0e"/>
+  <circle cx="200" cy="29" r="1.5" fill="#141416"/>
+  <!-- macOS/Windows UI on OLED screen -->
+  <rect x="67" y="33" width="266" height="15" rx="3 3 0 0" fill="#161622"/>
+  <rect x="74" y="37" width="30" height="8" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="110" y="37" width="20" height="8" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <rect x="136" y="37" width="20" height="8" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <!-- Desktop content -->
+  <rect x="70" y="52" width="120" height="90" rx="4" fill="rgba(255,255,255,0.04)"/>
+  <rect x="196" y="52" width="131" height="90" rx="4" fill="rgba(255,255,255,0.03)"/>
+  <rect x="70" y="148" width="257" height="52" rx="4" fill="rgba(255,255,255,0.035)"/>
+  <!-- Taskbar Windows 11 -->
+  <rect x="67" y="193" width="266" height="15" rx="0 0 3 3" fill="#1a1a28"/>
+  <!-- Dell logo on lid exterior (reflected as faint mark) -->
+  <text x="200" y="112" font-size="13" text-anchor="middle" fill="rgba(255,255,255,0.06)" font-family="sans-serif" font-weight="bold" letter-spacing="2">DELL</text>
+  <!-- Hinge -->
+  <rect x="58" y="213" width="284" height="5" rx="2" fill="#888"/>
+  <!-- Base -->
+  <rect x="48" y="218" width="304" height="116" rx="6" fill="url(#base)" filter="url(#ds)"/>
+  <!-- Keyboard -->
+  <rect x="68" y="228" width="224" height="76" rx="3" fill="#a8a8a0"/>
+  <g fill="#909090" opacity="0.6">
+    <rect x="72" y="232" width="9" height="7" rx="1"/>
+    <rect x="84" y="232" width="9" height="7" rx="1"/>
+    <rect x="96" y="232" width="9" height="7" rx="1"/>
+    <rect x="108" y="232" width="9" height="7" rx="1"/>
+    <rect x="120" y="232" width="9" height="7" rx="1"/>
+    <rect x="132" y="232" width="9" height="7" rx="1"/>
+    <rect x="144" y="232" width="9" height="7" rx="1"/>
+    <rect x="156" y="232" width="9" height="7" rx="1"/>
+    <rect x="168" y="232" width="9" height="7" rx="1"/>
+    <rect x="180" y="232" width="9" height="7" rx="1"/>
+    <rect x="192" y="232" width="9" height="7" rx="1"/>
+    <rect x="204" y="232" width="9" height="7" rx="1"/>
+    <rect x="216" y="232" width="9" height="7" rx="1"/>
+    <rect x="228" y="232" width="13" height="7" rx="1"/>
+    <rect x="72" y="243" width="9" height="7" rx="1"/>
+    <rect x="84" y="243" width="9" height="7" rx="1"/>
+    <rect x="96" y="243" width="9" height="7" rx="1"/>
+    <rect x="108" y="243" width="9" height="7" rx="1"/>
+    <rect x="120" y="243" width="9" height="7" rx="1"/>
+    <rect x="132" y="243" width="9" height="7" rx="1"/>
+    <rect x="144" y="243" width="9" height="7" rx="1"/>
+    <rect x="156" y="243" width="9" height="7" rx="1"/>
+    <rect x="168" y="243" width="9" height="7" rx="1"/>
+    <rect x="180" y="243" width="9" height="7" rx="1"/>
+    <rect x="192" y="243" width="9" height="7" rx="1"/>
+    <rect x="204" y="243" width="9" height="7" rx="1"/>
+    <rect x="216" y="243" width="25" height="7" rx="1"/>
+    <rect x="72" y="254" width="14" height="7" rx="1"/>
+    <rect x="89" y="254" width="9" height="7" rx="1"/>
+    <rect x="101" y="254" width="9" height="7" rx="1"/>
+    <rect x="113" y="254" width="9" height="7" rx="1"/>
+    <rect x="125" y="254" width="9" height="7" rx="1"/>
+    <rect x="137" y="254" width="9" height="7" rx="1"/>
+    <rect x="149" y="254" width="9" height="7" rx="1"/>
+    <rect x="161" y="254" width="9" height="7" rx="1"/>
+    <rect x="173" y="254" width="9" height="7" rx="1"/>
+    <rect x="185" y="254" width="9" height="7" rx="1"/>
+    <rect x="197" y="254" width="9" height="7" rx="1"/>
+    <rect x="209" y="254" width="9" height="7" rx="1"/>
+    <rect x="221" y="254" width="21" height="7" rx="1"/>
+    <!-- Space -->
+    <rect x="112" y="276" width="100" height="9" rx="2"/>
+  </g>
+  <!-- Trackpad -->
+  <rect x="156" y="294" width="88" height="58" rx="4" fill="#b0b0a8"/>
+  <!-- Highlight lid -->
+  <path d="M58 25 Q100 27 150 35 L150 44 Q100 36 58 34 Z" fill="rgba(255,255,255,0.15)"/>
+</svg>

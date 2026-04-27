@@ -1,0 +1,120 @@
+<!-- Hero Banner -->
+<section class="hero">
+  @for (slide of slides; track slide.title; let i = $index) {
+    <div class="hero-slide"
+         [class.active]="i === currentSlide"
+         [class.prev]="i === prevSlide"
+         [style.background]="slide.bg">
+      <div class="hero-content">
+        <h1 class="hero-title" [style.color]="slide.accent">{{ slide.title }}</h1>
+        <p class="hero-subtitle">{{ slide.subtitle }}</p>
+        <a [routerLink]="slide.link" class="hero-cta" [style.background]="slide.accent">
+          {{ slide.cta }}
+          <span class="material-icons">arrow_forward</span>
+        </a>
+      </div>
+      <div class="hero-image">
+        <img [src]="slide.heroImage" [alt]="slide.title" />
+      </div>
+    </div>
+  }
+  <!-- Arrow navigation -->
+  <button class="hero-arrow hero-arrow-prev" (click)="prevSlideClick()" aria-label="Previous slide">
+    <span class="material-icons">chevron_left</span>
+  </button>
+  <button class="hero-arrow hero-arrow-next" (click)="nextSlideClick()" aria-label="Next slide">
+    <span class="material-icons">chevron_right</span>
+  </button>
+  <div class="hero-dots">
+    @for (slide of slides; track slide.title; let i = $index) {
+      <button class="dot" [class.active]="i === currentSlide" (click)="goToSlide(i)"></button>
+    }
+  </div>
+</section>
+
+<!-- Shop by Category -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-grid">
+      @for (cat of categories; track cat.name) {
+        <a [routerLink]="['/category', cat.name]" class="category-card">
+          <div class="cat-icon-wrap">
+            <span class="material-icons">{{ cat.icon }}</span>
+          </div>
+          <span class="cat-name">{{ cat.name }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured Products</h2>
+      <a routerLink="/category/Tablets" class="view-all">View All <span class="material-icons">chevron_right</span></a>
+    </div>
+    <div class="product-grid">
+      @for (product of featuredProducts; track product.id) {
+        <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Promo Banners -->
+<section class="section promo-section">
+  <div class="container">
+    <div class="promo-grid">
+      <div class="promo-card promo-card-1">
+        <div class="promo-content">
+          <span class="promo-tag">Limited Time</span>
+          <h3>Up to 30% Off Headphones</h3>
+          <p>Premium audio at unbeatable prices</p>
+          <a routerLink="/category/Headphones" class="promo-btn">Shop Now</a>
+        </div>
+      </div>
+      <div class="promo-card promo-card-2">
+        <div class="promo-content">
+          <span class="promo-tag">New Arrivals</span>
+          <h3>Latest Laptops 2025</h3>
+          <p>Experience next-gen performance</p>
+          <a routerLink="/category/Laptops" class="promo-btn">Explore</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Special Offers Scroll -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Special Offers</h2>
+    </div>
+    <div class="offers-scroll">
+      @for (product of featuredProducts.slice(0, 6); track product.id) {
+        @if (product.discountPrice) {
+          <a [routerLink]="['/product', product.id]" class="offer-card">
+            <img [src]="product.images[0]" [alt]="product.name" />
+            <div class="offer-info">
+              <p class="offer-name">{{ product.name }}</p>
+              <div class="offer-prices">
+                <span class="offer-new">{{ product.discountPrice | currency:'INR':'symbol':'1.0-0' }}</span>
+                <span class="offer-old">{{ product.price | currency:'INR':'symbol':'1.0-0' }}</span>
+              </div>
+              <span class="offer-save">Save {{ product.price - product.discountPrice | currency:'INR':'symbol':'1.0-0' }}</span>
+            </div>
+          </a>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Contact Us -->
+<div id="contact-us">
+  <app-contact-us />
+</div>

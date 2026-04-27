@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1d3557"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3050"/>
+      <stop offset="100%" stop-color="#0c1a2e"/>
+    </linearGradient>
+    <radialGradient id="woofer" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#00bcd4" stop-opacity="0.5"/>
+      <stop offset="40%" stop-color="#00bcd4" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#060e1a" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Speaker body - cylindrical/pill shape -->
+  <rect x="85" y="85" width="230" height="230" rx="40" fill="url(#body)" stroke="#00bcd4" stroke-width="2.5"/>
+  <!-- Mesh fabric texture -->
+  <rect x="85" y="85" width="230" height="230" rx="40" fill="none" stroke="#00bcd4" stroke-width="0.5" opacity="0.15"/>
+  <!-- Woofer driver -->
+  <circle cx="200" cy="195" r="75" fill="#060e1a" stroke="#00bcd4" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="200" cy="195" r="75" fill="url(#woofer)"/>
+  <!-- Woofer rings -->
+  <circle cx="200" cy="195" r="62" fill="none" stroke="#00bcd4" stroke-width="1" opacity="0.5"/>
+  <circle cx="200" cy="195" r="50" fill="none" stroke="#00bcd4" stroke-width="1" opacity="0.4"/>
+  <circle cx="200" cy="195" r="38" fill="none" stroke="#00bcd4" stroke-width="1" opacity="0.35"/>
+  <circle cx="200" cy="195" r="26" fill="none" stroke="#00bcd4" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="200" cy="195" r="14" fill="#00bcd4" opacity="0.3"/>
+  <circle cx="200" cy="195" r="6" fill="#00bcd4" opacity="0.6"/>
+  <!-- Tweeter (top) -->
+  <circle cx="200" cy="108" r="16" fill="#060e1a" stroke="#00bcd4" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="200" cy="108" r="8" fill="#00bcd4" opacity="0.3"/>
+  <!-- Control buttons bar -->
+  <rect x="155" y="282" width="90" height="22" rx="11" fill="#060e1a" stroke="#00bcd4" stroke-width="1" opacity="0.8"/>
+  <circle cx="172" cy="293" r="6" fill="#00bcd4" opacity="0.4"/>
+  <circle cx="192" cy="293" r="6" fill="#00bcd4" opacity="0.6"/>
+  <circle cx="212" cy="293" r="6" fill="#ff6600" opacity="0.5"/>
+  <circle cx="228" cy="293" r="6" fill="#00bcd4" opacity="0.3"/>
+  <!-- LED ring at base -->
+  <rect x="108" y="305" width="184" height="6" rx="3" fill="#00bcd4" opacity="0.4"/>
+  <!-- USB-C port -->
+  <rect x="190" y="312" width="20" height="5" rx="2.5" fill="#00bcd4" opacity="0.4"/>
+  <!-- Label -->
+  <text x="200" y="360" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#00bcd4" text-anchor="middle" letter-spacing="3">SPEAKER</text>
+  <text x="200" y="381" font-family="Arial,sans-serif" font-size="11" fill="#4a8fa5" text-anchor="middle">30W · IP67 Waterproof</text>
+</svg>

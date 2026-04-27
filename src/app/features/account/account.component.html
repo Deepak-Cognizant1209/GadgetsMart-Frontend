@@ -1,0 +1,80 @@
+<div class="account-page">
+  <div class="container">
+    <div class="account-header">
+      <div class="avatar">
+        <span class="material-icons">account_circle</span>
+      </div>
+      <div>
+        <h1>My Account</h1>
+        <p>Manage your profile and orders</p>
+      </div>
+    </div>
+
+    <mat-tab-group animationDuration="200ms" class="account-tabs">
+
+      <!-- Profile Tab -->
+      <mat-tab label="Profile">
+        <div class="tab-panel">
+          <h2>Edit Profile</h2>
+          <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="profile-form">
+            <mat-form-field appearance="outline">
+              <mat-label>Full Name</mat-label>
+              <input matInput formControlName="name" />
+              <mat-icon matPrefix>person</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Email Address</mat-label>
+              <input matInput formControlName="email" type="email" />
+              <mat-icon matPrefix>email</mat-icon>
+            </mat-form-field>
+            <button type="submit" class="save-btn" [disabled]="saving || profileForm.invalid">
+              {{ saving ? 'Saving…' : 'Save Changes' }}
+            </button>
+          </form>
+        </div>
+      </mat-tab>
+
+      <!-- Orders Tab -->
+      <mat-tab label="Orders ({{ orders.length }})">
+        <div class="tab-panel">
+          <h2>My Orders</h2>
+          @if (orders.length === 0) {
+            <div class="empty-orders">
+              <span class="material-icons">receipt_long</span>
+              <p>No orders yet</p>
+            </div>
+          } @else {
+            <div class="orders-table">
+              <div class="orders-header">
+                <span>Order ID</span><span>Date</span><span>Items</span><span>Total</span><span>Status</span>
+              </div>
+              @for (order of orders; track order.id) {
+                <div class="order-row">
+                  <span class="order-id">#{{ order.id }}</span>
+                  <span class="order-date">{{ order.createdAt | date:'mediumDate' }}</span>
+                  <span class="order-items">{{ order.items.length }} item(s)</span>
+                  <span class="order-total">{{ order.total | currency:'INR':'symbol':'1.0-0' }}</span>
+                  <span class="status-chip" [style.background]="statusColors[order.status] + '22'" [style.color]="statusColors[order.status]">
+                    {{ order.status }}
+                  </span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Addresses Tab -->
+      <mat-tab label="Addresses">
+        <div class="tab-panel">
+          <h2>Saved Addresses</h2>
+          <div class="empty-orders">
+            <span class="material-icons">location_on</span>
+            <p>No saved addresses yet. Complete a checkout to save an address.</p>
+          </div>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>

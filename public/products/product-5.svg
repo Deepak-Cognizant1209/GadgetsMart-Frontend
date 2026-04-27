@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3a3a3c"/><stop offset="100%" stop-color="#1e1e20"/></linearGradient>
+    <linearGradient id="base" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#2a2a2c"/><stop offset="100%" stop-color="#3e3e40"/></linearGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a2a44"/><stop offset="100%" stop-color="#050b18"/></linearGradient>
+    <linearGradient id="kb" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#383838"/><stop offset="100%" stop-color="#2a2a2a"/></linearGradient>
+    <filter id="ds"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#000" flood-opacity="0.75"/></filter>
+  </defs>
+  <!-- MacBook Pro 14" - open laptop view -->
+  <!-- Lid -->
+  <rect x="60" y="28" width="280" height="186" rx="8" fill="url(#lid)" filter="url(#ds)"/>
+  <!-- Screen notch -->
+  <rect x="178" y="28" width="44" height="12" rx="0 0 6 6" fill="#1a1a1c"/>
+  <!-- Screen bezel - thin -->
+  <rect x="68" y="32" width="264" height="178" rx="5" fill="#0e0e10"/>
+  <!-- Screen display -->
+  <rect x="72" y="36" width="256" height="170" rx="4" fill="url(#scr)"/>
+  <!-- macOS menu bar -->
+  <rect x="72" y="36" width="256" height="22" rx="4 4 0 0" fill="#1a1e2c"/>
+  <circle cx="84" cy="47" r="5" fill="#ff5f57"/>
+  <circle cx="100" cy="47" r="5" fill="#febc2e"/>
+  <circle cx="116" cy="47" r="5" fill="#28c840"/>
+  <text x="210" y="51" font-size="8" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif"></text>
+  <!-- macOS dock (bottom of screen) -->
+  <rect x="122" y="188" width="156" height="14" rx="6" fill="rgba(255,255,255,0.12)"/>
+  <rect x="126" y="189.5" width="10" height="10" rx="3" fill="#4a90e2" opacity="0.8"/>
+  <rect x="139" y="189.5" width="10" height="10" rx="3" fill="#34c759" opacity="0.8"/>
+  <rect x="152" y="189.5" width="10" height="10" rx="3" fill="#ff9500" opacity="0.8"/>
+  <rect x="165" y="189.5" width="10" height="10" rx="3" fill="#af52de" opacity="0.8"/>
+  <rect x="178" y="189.5" width="10" height="10" rx="3" fill="#ff3b30" opacity="0.8"/>
+  <rect x="191" y="189.5" width="10" height="10" rx="3" fill="#007aff" opacity="0.8"/>
+  <rect x="204" y="189.5" width="10" height="10" rx="3" fill="#32ade6" opacity="0.8"/>
+  <!-- Desktop window -->
+  <rect x="80" y="62" width="180" height="118" rx="5" fill="rgba(255,255,255,0.04)"/>
+  <rect x="80" y="62" width="180" height="14" rx="5 5 0 0" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="90" cy="69" r="3.5" fill="rgba(255,100,100,0.5)"/>
+  <circle cx="100" cy="69" r="3.5" fill="rgba(255,180,50,0.5)"/>
+  <circle cx="110" cy="69" r="3.5" fill="rgba(50,200,80,0.5)"/>
+  <!-- Apple logo on lid back (reflected) -->
+  <ellipse cx="200" cy="120" rx="18" ry="22" fill="rgba(255,255,255,0.07)"/>
+  <circle cx="200" cy="112" r="10" fill="rgba(255,255,255,0.07)"/>
+  <rect x="192" y="90" width="6" height="12" rx="2" fill="rgba(255,255,255,0.07)"/>
+  <!-- Hinge line -->
+  <rect x="60" y="212" width="280" height="4" rx="2" fill="#141414"/>
+  <!-- Base/keyboard -->
+  <rect x="50" y="216" width="300" height="120" rx="6" fill="url(#base)" filter="url(#ds)"/>
+  <!-- Keyboard area -->
+  <rect x="70" y="224" width="220" height="82" rx="4" fill="url(#kb)"/>
+  <!-- Keyboard rows -->
+  <g fill="#4a4a4c" opacity="0.8">
+    <!-- Row 1 function keys -->
+    <rect x="76" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="92" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="108" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="124" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="140" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="156" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="172" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="188" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="204" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="220" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="236" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="252" y="228" width="12" height="8" rx="1.5"/>
+    <rect x="268" y="228" width="14" height="8" rx="1.5"/>
+    <!-- Row 2 number row -->
+    <rect x="76" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="90" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="104" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="118" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="132" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="146" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="160" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="174" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="188" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="202" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="216" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="230" y="240" width="10" height="8" rx="1.5"/>
+    <rect x="244" y="240" width="38" height="8" rx="1.5"/>
+    <!-- Row 3 QWERTY -->
+    <rect x="76" y="252" width="16" height="8" rx="1.5"/>
+    <rect x="96" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="110" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="124" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="138" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="152" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="166" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="180" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="194" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="208" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="222" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="236" y="252" width="10" height="8" rx="1.5"/>
+    <rect x="250" y="252" width="32" height="8" rx="1.5"/>
+    <!-- Row 4 ASDF -->
+    <rect x="76" y="264" width="19" height="8" rx="1.5"/>
+    <rect x="99" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="113" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="127" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="141" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="155" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="169" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="183" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="197" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="211" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="225" y="264" width="10" height="8" rx="1.5"/>
+    <rect x="239" y="264" width="43" height="8" rx="1.5"/>
+    <!-- Space bar -->
+    <rect x="118" y="288" width="116" height="10" rx="2"/>
+    <!-- Touch ID (top right of keyboard) -->
+    <rect x="270" y="228" width="12" height="8" rx="2" fill="#5a5a5c"/>
+  </g>
+  <!-- Trackpad -->
+  <rect x="148" y="300" width="104" height="66" rx="5" fill="#2e2e30"/>
+  <!-- MagSafe port left -->
+  <rect x="50" y="268" width="4" height="10" rx="2" fill="#9a9aa0"/>
+  <!-- Thunderbolt ports left -->
+  <rect x="50" y="284" width="4" height="10" rx="2" fill="#9a9aa0"/>
+  <rect x="50" y="298" width="4" height="10" rx="2" fill="#9a9aa0"/>
+  <!-- Highlight on lid -->
+  <path d="M60 28 Q100 30 160 40 L160 50 Q100 40 60 38 Z" fill="rgba(255,255,255,0.06)"/>
+</svg>

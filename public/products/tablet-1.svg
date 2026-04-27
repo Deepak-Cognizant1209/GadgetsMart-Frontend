@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1d3557"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a2e4a"/>
+      <stop offset="100%" stop-color="#0f2035"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Tablet body -->
+  <rect x="115" y="30" width="170" height="300" rx="18" fill="url(#body)" stroke="#00bcd4" stroke-width="2.5"/>
+  <!-- Screen bezel -->
+  <rect x="126" y="58" width="148" height="220" rx="5" fill="#060e1a"/>
+  <!-- Status bar -->
+  <rect x="133" y="64" width="134" height="2" rx="1" fill="#00bcd4" opacity="0.4"/>
+  <!-- App icons grid -->
+  <rect x="137" y="78" width="32" height="32" rx="8" fill="#00bcd4" opacity="0.75"/>
+  <rect x="178" y="78" width="32" height="32" rx="8" fill="#ff6600" opacity="0.75"/>
+  <rect x="219" y="78" width="32" height="32" rx="8" fill="#4caf50" opacity="0.75"/>
+  <rect x="137" y="120" width="32" height="32" rx="8" fill="#9c27b0" opacity="0.75"/>
+  <rect x="178" y="120" width="32" height="32" rx="8" fill="#2196f3" opacity="0.75"/>
+  <rect x="219" y="120" width="32" height="32" rx="8" fill="#ff5722" opacity="0.75"/>
+  <rect x="137" y="162" width="32" height="32" rx="8" fill="#009688" opacity="0.75"/>
+  <rect x="178" y="162" width="32" height="32" rx="8" fill="#e91e63" opacity="0.75"/>
+  <rect x="219" y="162" width="32" height="32" rx="8" fill="#ffc107" opacity="0.75"/>
+  <!-- Dock bar at bottom of screen -->
+  <rect x="137" y="208" width="134" height="56" rx="4" fill="#0d2236" opacity="0.9"/>
+  <rect x="148" y="220" width="28" height="28" rx="7" fill="#00bcd4" opacity="0.5"/>
+  <rect x="184" y="220" width="28" height="28" rx="7" fill="#00bcd4" opacity="0.3"/>
+  <rect x="220" y="220" width="28" height="28" rx="7" fill="#00bcd4" opacity="0.2"/>
+  <!-- Camera dot -->
+  <circle cx="200" cy="44" r="5" fill="#00bcd4" opacity="0.5"/>
+  <circle cx="200" cy="44" r="2.5" fill="#00bcd4" opacity="0.8"/>
+  <!-- Home bar -->
+  <rect x="168" y="318" width="64" height="5" rx="2.5" fill="#00bcd4" opacity="0.55"/>
+  <!-- Side button -->
+  <rect x="285" y="110" width="5" height="35" rx="2.5" fill="#00bcd4" opacity="0.5"/>
+  <!-- Label -->
+  <text x="200" y="370" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#00bcd4" text-anchor="middle" letter-spacing="3">TABLET</text>
+</svg>
