@@ -1,0 +1,184 @@
+<div class="category-page">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <a routerLink="/">Home</a>
+      <span class="material-icons sep">chevron_right</span>
+      <span class="current">{{ categoryName }}</span>
+    </div>
+  </div>
+
+  <div class="container layout">
+    <!-- Header -->
+    <div class="filter-header">
+      <h1 class="page-title">{{ categoryName }}</h1>
+      <div class="filter-controls">
+        <button class="filter-toggle-btn" (click)="sidebarOpen = !sidebarOpen">
+          <span class="material-icons">tune</span>
+          Filters
+          @if (activeFilterCount > 0) {
+            <span class="filter-badge">{{ activeFilterCount }}</span>
+          }
+        </button>
+        <div class="sort-wrap">
+          <span class="material-icons sort-icon">sort</span>
+          <select class="sort-select" [(ngModel)]="sortBy" (ngModelChange)="onSortChange()">
+            @for (opt of sortOptions; track opt.value) {
+              <option [value]="opt.value">{{ opt.label }}</option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-layout">
+      <!-- Sidebar -->
+      @if (sidebarOpen) {
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-title-row">
+              <span class="material-icons filter-icon">filter_list</span>
+              <h3>Filters</h3>
+              @if (activeFilterCount > 0) {
+                <span class="filter-count-badge">{{ activeFilterCount }}</span>
+              }
+            </div>
+            <button class="clear-all-btn" (click)="clearFilters()">Clear All</button>
+          </div>
+
+          <!-- Active filter tags -->
+          @if (activeFilterCount > 0) {
+            <div class="active-filters">
+              @for (brand of selectedBrands; track brand) {
+                <span class="active-filter-tag">
+                  {{ brand }}
+                  <button class="remove-filter" (click)="toggleBrand(brand)">
+                    <span class="material-icons">close</span>
+                  </button>
+                </span>
+              }
+              @if (priceMin > 0 || priceMax < 200000) {
+                <span class="active-filter-tag">
+                  ₹{{ priceMin | number }} – ₹{{ priceMax | number }}
+                  <button class="remove-filter" (click)="clearPrice()">
+                    <span class="material-icons">close</span>
+                  </button>
+                </span>
+              }
+              @if (selectedRating > 0) {
+                <span class="active-filter-tag">
+                  {{ selectedRating }}★ & above
+                  <button class="remove-filter" (click)="onRatingChange(selectedRating)">
+                    <span class="material-icons">close</span>
+                  </button>
+                </span>
+              }
+            </div>
+          }
+
+          <!-- Price Range -->
+          <div class="filter-group">
+            <div class="filter-group-header">
+              <h4>Price Range</h4>
+              @if (priceMin > 0 || priceMax < 200000) {
+                <span class="filter-active-dot"></span>
+              }
+            </div>
+            <div class="price-display">
+              <span class="price-value">₹{{ priceMin | number }}</span>
+              <span class="price-dash">—</span>
+              <span class="price-value">₹{{ priceMax | number }}</span>
+            </div>
+            <div class="price-inputs">
+              <input type="range" [min]="0" [max]="200000" [step]="1000"
+                     [(ngModel)]="priceMin" (change)="onPriceChange()" class="range-input" />
+              <input type="range" [min]="0" [max]="200000" [step]="1000"
+                     [(ngModel)]="priceMax" (change)="onPriceChange()" class="range-input" />
+            </div>
+          </div>
+
+          <!-- Brands -->
+          @if (availableBrands.length > 0) {
+            <div class="filter-group">
+              <div class="filter-group-header">
+                <h4>Brand</h4>
+                @if (selectedBrands.length > 0) {
+                  <span class="filter-active-dot"></span>
+                }
+              </div>
+              <div class="brand-chips">
+                @for (brand of availableBrands; track brand) {
+                  <button class="brand-chip" [class.selected]="isBrandSelected(brand)"
+                          (click)="toggleBrand(brand)">
+                    @if (isBrandSelected(brand)) {
+                      <span class="material-icons chip-check">check</span>
+                    }
+                    {{ brand }}
+                  </button>
+                }
+              </div>
+            </div>
+          }
+
+          <!-- Rating -->
+          <div class="filter-group">
+            <div class="filter-group-header">
+              <h4>Customer Rating</h4>
+              @if (selectedRating > 0) {
+                <span class="filter-active-dot"></span>
+              }
+            </div>
+            @for (opt of ratingOptions; track opt.value) {
+              <button class="rating-btn" [class.active]="selectedRating === opt.value"
+                      (click)="onRatingChange(opt.value)">
+                <span class="stars">{{ getStars(opt.value) }}</span>
+                <span>{{ opt.label }}</span>
+              </button>
+            }
+          </div>
+        </aside>
+      }
+
+      <!-- Product Grid -->
+      <div class="products-area">
+        @if (page$ | async; as page) {
+          <p class="result-count">
+            Showing <strong>{{ page.content.length }}</strong> of <strong>{{ page.totalElements }}</strong> products
+          </p>
+        }
+
+        @if (loading$ | async) {
+          <div class="product-grid">
+            @for (s of skeletons; track $index) {
+              <app-skeleton-card />
+            }
+          </div>
+        } @else if ((products$ | async)?.length === 0) {
+          <app-empty-state
+            icon="search_off"
+            title="No products found"
+            message="Try adjusting your filters or search terms"
+            ctaLabel="Clear Filters"
+            (ctaClick)="clearFilters()" />
+        } @else {
+          <div class="product-grid">
+            @for (product of products$ | async; track product.id) {
+              <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
+            }
+          </div>
+          @if (page$ | async; as page) {
+            @if (page.totalPages > 1) {
+              <mat-paginator
+                [length]="page.totalElements"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="[8, 12, 24]"
+                [pageIndex]="currentPage"
+                (page)="onPageChange($event)"
+                showFirstLastButtons />
+            }
+          }
+        }
+      </div>
+    </div>
+  </div>
+</div>

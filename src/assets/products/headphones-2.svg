@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1a3040"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a3a3a"/>
+      <stop offset="100%" stop-color="#0c2020"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Headband outer -->
+  <path d="M 88 275 C 88 115 312 115 312 275" stroke="#e0e0e0" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <!-- Headband silver detail -->
+  <path d="M 96 250 C 96 130 304 130 304 250" stroke="#00bcd4" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <!-- Left ear cup - Apple AirPods Max style (flatter) -->
+  <ellipse cx="88" cy="286" rx="52" ry="60" fill="url(#cup)" stroke="#d0d0d0" stroke-width="2.5"/>
+  <!-- Left mesh detail -->
+  <ellipse cx="88" cy="286" rx="36" ry="42" fill="none" stroke="#00bcd4" stroke-width="1" opacity="0.3"/>
+  <ellipse cx="88" cy="286" rx="22" ry="26" fill="#060e1a"/>
+  <!-- Left mesh holes pattern -->
+  <circle cx="80" cy="278" r="3" fill="#1a2a2a"/>
+  <circle cx="88" cy="278" r="3" fill="#1a2a2a"/>
+  <circle cx="96" cy="278" r="3" fill="#1a2a2a"/>
+  <circle cx="80" cy="288" r="3" fill="#1a2a2a"/>
+  <circle cx="88" cy="288" r="3" fill="#1a2a2a"/>
+  <circle cx="96" cy="288" r="3" fill="#1a2a2a"/>
+  <circle cx="80" cy="298" r="3" fill="#1a2a2a"/>
+  <circle cx="88" cy="298" r="3" fill="#1a2a2a"/>
+  <circle cx="96" cy="298" r="3" fill="#1a2a2a"/>
+  <!-- Right ear cup -->
+  <ellipse cx="312" cy="286" rx="52" ry="60" fill="url(#cup)" stroke="#d0d0d0" stroke-width="2.5"/>
+  <ellipse cx="312" cy="286" rx="36" ry="42" fill="none" stroke="#00bcd4" stroke-width="1" opacity="0.3"/>
+  <ellipse cx="312" cy="286" rx="22" ry="26" fill="#060e1a"/>
+  <circle cx="304" cy="278" r="3" fill="#1a2a2a"/>
+  <circle cx="312" cy="278" r="3" fill="#1a2a2a"/>
+  <circle cx="320" cy="278" r="3" fill="#1a2a2a"/>
+  <circle cx="304" cy="288" r="3" fill="#1a2a2a"/>
+  <circle cx="312" cy="288" r="3" fill="#1a2a2a"/>
+  <circle cx="320" cy="288" r="3" fill="#1a2a2a"/>
+  <circle cx="304" cy="298" r="3" fill="#1a2a2a"/>
+  <circle cx="312" cy="298" r="3" fill="#1a2a2a"/>
+  <circle cx="320" cy="298" r="3" fill="#1a2a2a"/>
+  <!-- Digital crown (right side) -->
+  <circle cx="364" cy="286" r="12" fill="#2a3a3a" stroke="#d0d0d0" stroke-width="1.5"/>
+  <circle cx="364" cy="286" r="7" fill="#1a2a2a"/>
+  <text x="200" y="375" font-family="Arial,sans-serif" font-weight="700" font-size="16" fill="#00bcd4" text-anchor="middle" letter-spacing="2">HEADPHONES</text>
+  <text x="200" y="395" font-family="Arial,sans-serif" font-size="11" fill="#4a8fa5" text-anchor="middle">Spatial Audio · 20hr Battery</text>
+</svg>

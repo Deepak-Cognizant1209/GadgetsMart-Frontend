@@ -1,0 +1,197 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    @if (success) {
+      <div class="success-state">
+        <div class="success-icon-wrap">
+          <span class="material-icons success-icon">check_circle</span>
+        </div>
+        <h2 class="success-title">Account Created!</h2>
+        <p class="success-msg">Your account has been set up. You can now sign in.</p>
+        <button class="submit-btn" (click)="goToLogin()">
+          <span>Go to Sign In</span>
+          <span class="material-icons btn-icon">arrow_forward</span>
+        </button>
+      </div>
+    } @else {
+
+      <!-- Card header -->
+      <div class="auth-header">
+        <div class="header-text">
+          <h1 class="auth-title">Create Your Account</h1>
+          <p class="auth-subtitle">Fill in the details below to get started</p>
+        </div>
+      </div>
+
+      @if (error) {
+        <div class="error-banner">
+          <span class="material-icons">error_outline</span> {{ error }}
+        </div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-grid">
+
+          <!-- ── Left: Personal Information ── -->
+          <div class="form-col">
+            <div class="section-label">
+              <span class="section-badge">1</span>
+              <span>Personal Information</span>
+            </div>
+
+            <div class="field-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Full Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter Full Name" />
+                <mat-icon matPrefix>person</mat-icon>
+                @if (name.invalid && name.touched) {
+                  <mat-error>{{ name.errors?.['required'] ? 'Required' : 'Min 2 chars' }}</mat-error>
+                }
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="tel" formControlName="phone" placeholder="Enter Phone Number" />
+                <mat-icon matPrefix>phone</mat-icon>
+                @if (phone.invalid && phone.touched) {
+                  <mat-error>{{ phone.errors?.['required'] ? 'Required' : 'Invalid' }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Address Line</mat-label>
+              <input matInput formControlName="addressLine" placeholder="Enter Address Line" />
+              <mat-icon matPrefix>home</mat-icon>
+              @if (addressLine.invalid && addressLine.touched) {
+                <mat-error>Address is required</mat-error>
+              }
+            </mat-form-field>
+
+            <div class="field-row">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city" placeholder="Enter City" />
+                <mat-icon matPrefix>location_city</mat-icon>
+                @if (city.invalid && city.touched) {
+                  <mat-error>Required</mat-error>
+                }
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>State</mat-label>
+                <input matInput formControlName="state" placeholder="Enter State" />
+                <mat-icon matPrefix>map</mat-icon>
+                @if (state.invalid && state.touched) {
+                  <mat-error>Required</mat-error>
+                }
+              </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="pincode-field">
+              <mat-label>Pincode</mat-label>
+              <input matInput formControlName="pincode" placeholder="Enter Pincode" maxlength="6" />
+              <mat-icon matPrefix>pin_drop</mat-icon>
+              @if (pincode.invalid && pincode.touched) {
+                <mat-error>{{ pincode.errors?.['required'] ? 'Required' : 'Invalid pincode' }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- ── Divider ── -->
+          <div class="col-divider"></div>
+
+          <!-- ── Right: Account Details ── -->
+          <div class="form-col">
+            <div class="section-label">
+              <span class="section-badge">2</span>
+              <span>Account Details</span>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email Address</mat-label>
+              <input matInput type="email" formControlName="email" placeholder="Enter Email Address" />
+              <mat-icon matPrefix>email</mat-icon>
+              @if (email.invalid && email.touched) {
+                <mat-error>{{ email.errors?.['required'] ? 'Required' : 'Invalid email' }}</mat-error>
+              }
+            </mat-form-field>
+
+            <div formGroupName="passwords">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+                <mat-icon matPrefix>lock</mat-icon>
+                <button type="button" matSuffix mat-icon-button (click)="hidePassword = !hidePassword">
+                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                @if (password.invalid && password.touched) {
+                  <mat-error>{{ password.errors?.['required'] ? 'Required' : 'Min 8 characters' }}</mat-error>
+                }
+              </mat-form-field>
+
+              @if (password.value) {
+                <div class="strength-row">
+                  <div class="strength-segments">
+                    @for (seg of strengthSegs; track seg) {
+                      <div class="strength-seg"
+                           [class.active]="getStrength() >= seg"
+                           [class.weak]="getStrength() >= seg && getStrength() === 1"
+                           [class.fair]="getStrength() >= seg && getStrength() === 2"
+                           [class.good]="getStrength() >= seg && getStrength() === 3"
+                           [class.strong]="getStrength() >= seg && getStrength() === 4"></div>
+                    }
+                  </div>
+                  <span class="strength-text"
+                        [class.weak]="getStrength() === 1"
+                        [class.fair]="getStrength() === 2"
+                        [class.good]="getStrength() === 3"
+                        [class.strong]="getStrength() === 4">{{ getStrengthLabel() }}</span>
+                </div>
+              }
+
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword" />
+                <mat-icon matPrefix>lock_outline</mat-icon>
+                <button type="button" matSuffix mat-icon-button (click)="hideConfirm = !hideConfirm">
+                  <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                @if (passwordsGroup.errors?.['mismatch'] && confirmPassword.touched) {
+                  <mat-error>Passwords do not match</mat-error>
+                }
+              </mat-form-field>
+            </div>
+
+            <div class="password-hint">
+              <span class="material-icons hint-icon">info</span>
+              Use 8+ characters with uppercase, numbers &amp; symbols
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer: terms + submit -->
+        <div class="form-footer">
+          <div class="terms-row">
+            <input type="checkbox" id="terms" />
+            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="loading">
+            @if (loading) {
+              <mat-spinner diameter="18" />
+            } @else {
+              <span>Create Account</span>
+              <span class="material-icons btn-icon">arrow_forward</span>
+            }
+          </button>
+        </div>
+
+      </form>
+
+      <p class="auth-switch">Already have an account? <a routerLink="/login">Sign in</a></p>
+    }
+
+  </div>
+</div>

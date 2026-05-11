@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="cup" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2c2c2e"/><stop offset="100%" stop-color="#141416"/></linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a3a3c"/><stop offset="100%" stop-color="#1c1c1e"/></linearGradient>
+    <radialGradient id="shine" cx="30%" cy="30%" r="55%"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>
+    <filter id="ds"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000" flood-opacity="0.65"/></filter>
+  </defs>
+  <!-- Bose QC45 - front view, black with silver accents -->
+  <!-- Headband arch - rounded, padded Bose style -->
+  <path d="M112 200 Q112 75 200 60 Q288 75 288 200" fill="none" stroke="url(#band)" stroke-width="22" stroke-linecap="round" filter="url(#ds)"/>
+  <!-- Headband cushion -->
+  <path d="M118 200 Q118 82 200 68 Q282 82 282 200" fill="none" stroke="#262628" stroke-width="14" stroke-linecap="round"/>
+  <!-- Headband top padding (rounded, more plush look) -->
+  <path d="M162 80 Q200 66 238 80" fill="none" stroke="#202022" stroke-width="20" stroke-linecap="round"/>
+  <!-- Left ear cup (round, Bose style) -->
+  <circle cx="114" cy="222" r="68" fill="url(#cup)" filter="url(#ds)"/>
+  <circle cx="114" cy="222" r="68" fill="url(#shine)"/>
+  <!-- Left cup cushion (oval ear cushion) -->
+  <ellipse cx="114" cy="222" rx="55" ry="60" fill="#1a1a1c"/>
+  <ellipse cx="114" cy="222" rx="44" ry="48" fill="#111113"/>
+  <!-- Bose logo left cup -->
+  <text x="114" y="228" font-size="10" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="sans-serif" letter-spacing="2">BOSE</text>
+  <!-- Silver adjustment slider left -->
+  <rect x="168" y="185" width="10" height="36" rx="5" fill="#444446"/>
+  <!-- Right ear cup -->
+  <circle cx="286" cy="222" r="68" fill="url(#cup)" filter="url(#ds)"/>
+  <circle cx="286" cy="222" r="68" fill="url(#shine)"/>
+  <!-- Right cup cushion -->
+  <ellipse cx="286" cy="222" rx="55" ry="60" fill="#1a1a1c"/>
+  <ellipse cx="286" cy="222" rx="44" ry="48" fill="#111113"/>
+  <!-- Right cup - "QC" mode button (small) -->
+  <circle cx="286" cy="184" r="10" fill="#252526"/>
+  <text x="286" y="188" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="sans-serif">NC</text>
+  <!-- Right cup controls -->
+  <circle cx="316" cy="215" r="7" fill="#2a2a2c"/>
+  <circle cx="324" cy="235" r="7" fill="#2a2a2c"/>
+  <!-- Silver adjustment slider right -->
+  <rect x="222" y="185" width="10" height="36" rx="5" fill="#444446"/>
+  <!-- USB-C port right cup bottom -->
+  <rect x="280" y="281" width="12" height="5" rx="2.5" fill="#111"/>
+  <!-- 3.5mm jack left cup bottom -->
+  <circle cx="88" cy="284" r="4" fill="#111"/>
+  <!-- Cup highlights -->
+  <ellipse cx="98" cy="204" rx="20" ry="22" fill="rgba(255,255,255,0.04)"/>
+  <ellipse cx="270" cy="204" rx="20" ry="22" fill="rgba(255,255,255,0.04)"/>
+  <!-- QC45 label -->
+  <text x="200" y="370" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="sans-serif" letter-spacing="1">QuietComfort 45</text>
+</svg>

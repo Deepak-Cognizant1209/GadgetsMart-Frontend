@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1d3557"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3050"/>
+      <stop offset="100%" stop-color="#0f1f35"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Laptop lid -->
+  <rect x="65" y="55" width="270" height="185" rx="12" fill="url(#lid)" stroke="#00bcd4" stroke-width="2.5"/>
+  <!-- Screen area -->
+  <rect x="78" y="68" width="244" height="159" rx="5" fill="#060e1a"/>
+  <!-- Menu bar -->
+  <rect x="78" y="68" width="244" height="16" rx="5 5 0 0" fill="#0d2030" opacity="0.9"/>
+  <circle cx="92" cy="76" r="4" fill="#ff5f57"/>
+  <circle cx="106" cy="76" r="4" fill="#febc2e"/>
+  <circle cx="120" cy="76" r="4" fill="#28c840"/>
+  <!-- Window content -->
+  <rect x="88" y="94" width="152" height="120" rx="4" fill="#0d2030" opacity="0.9"/>
+  <rect x="94" y="100" width="140" height="8" rx="2" fill="#00bcd4" opacity="0.7"/>
+  <rect x="94" y="114" width="100" height="4" rx="2" fill="#00bcd4" opacity="0.4"/>
+  <rect x="94" y="124" width="120" height="4" rx="2" fill="#00bcd4" opacity="0.35"/>
+  <rect x="94" y="134" width="90" height="4" rx="2" fill="#00bcd4" opacity="0.3"/>
+  <rect x="94" y="148" width="140" height="50" rx="3" fill="#0a1828" opacity="0.9"/>
+  <rect x="100" y="154" width="128" height="6" rx="3" fill="#00bcd4" opacity="0.5"/>
+  <rect x="100" y="166" width="100" height="6" rx="3" fill="#00bcd4" opacity="0.35"/>
+  <rect x="100" y="178" width="114" height="6" rx="3" fill="#00bcd4" opacity="0.25"/>
+  <!-- Sidebar panel -->
+  <rect x="250" y="94" width="72" height="120" rx="4" fill="#0a1828" opacity="0.8"/>
+  <rect x="258" y="104" width="56" height="22" rx="4" fill="#00bcd4" opacity="0.2"/>
+  <rect x="258" y="132" width="56" height="22" rx="4" fill="#00bcd4" opacity="0.15"/>
+  <rect x="258" y="160" width="56" height="22" rx="4" fill="#00bcd4" opacity="0.1"/>
+  <!-- Camera dot -->
+  <circle cx="200" cy="62" r="3.5" fill="#00bcd4" opacity="0.5"/>
+  <!-- Hinge shadow -->
+  <rect x="65" y="238" width="270" height="4" rx="0" fill="#00bcd4" opacity="0.2"/>
+  <!-- Base/keyboard area -->
+  <rect x="50" y="242" width="300" height="26" rx="0 0 10 10" fill="url(#lid)" stroke="#00bcd4" stroke-width="1.5"/>
+  <!-- Touchpad -->
+  <rect x="155" y="246" width="90" height="18" rx="5" fill="#0f2035" stroke="#00bcd4" stroke-width="1" opacity="0.8"/>
+  <!-- Keyboard rows hint -->
+  <rect x="75" y="246" width="70" height="3" rx="1.5" fill="#00bcd4" opacity="0.15"/>
+  <rect x="75" y="253" width="70" height="3" rx="1.5" fill="#00bcd4" opacity="0.1"/>
+  <rect x="260" y="246" width="70" height="3" rx="1.5" fill="#00bcd4" opacity="0.15"/>
+  <rect x="260" y="253" width="70" height="3" rx="1.5" fill="#00bcd4" opacity="0.1"/>
+  <!-- Label -->
+  <text x="200" y="308" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#00bcd4" text-anchor="middle" letter-spacing="3">LAPTOP</text>
+  <text x="200" y="330" font-family="Arial,sans-serif" font-size="12" fill="#4a8fa5" text-anchor="middle">M3 Pro · 18hr Battery</text>
+</svg>

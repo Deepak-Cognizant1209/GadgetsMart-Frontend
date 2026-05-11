@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0d1a"/>
+      <stop offset="100%" stop-color="#1a2035"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a3a"/>
+      <stop offset="100%" stop-color="#1a1a28"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Smart speaker - tall cylindrical like Sonos/Amazon -->
+  <rect x="135" y="55" width="130" height="280" rx="30" fill="url(#body)" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+  <!-- Mesh fabric wrap -->
+  <rect x="135" y="55" width="130" height="280" rx="30" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.2"/>
+  <!-- Horizontal mesh lines -->
+  <line x1="135" y1="100" x2="265" y2="100" stroke="#fff" stroke-width="0.5" opacity="0.15"/>
+  <line x1="135" y1="130" x2="265" y2="130" stroke="#fff" stroke-width="0.5" opacity="0.15"/>
+  <line x1="135" y1="160" x2="265" y2="160" stroke="#fff" stroke-width="0.5" opacity="0.15"/>
+  <line x1="135" y1="190" x2="265" y2="190" stroke="#fff" stroke-width="0.5" opacity="0.15"/>
+  <line x1="135" y1="220" x2="265" y2="220" stroke="#fff" stroke-width="0.5" opacity="0.15"/>
+  <line x1="135" y1="250" x2="265" y2="250" stroke="#fff" stroke-width="0.5" opacity="0.15"/>
+  <line x1="135" y1="280" x2="265" y2="280" stroke="#fff" stroke-width="0.5" opacity="0.15"/>
+  <!-- Top control panel -->
+  <rect x="135" y="55" width="130" height="55" rx="30 30 0 0" fill="#1a1a28" opacity="0.9"/>
+  <!-- Touch ring -->
+  <circle cx="200" cy="82" r="28" fill="none" stroke="#00bcd4" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="200" cy="82" r="18" fill="none" stroke="#00bcd4" stroke-width="1" opacity="0.35"/>
+  <!-- Center logo -->
+  <circle cx="200" cy="82" r="8" fill="#00bcd4" opacity="0.7"/>
+  <!-- Volume +/- indicators -->
+  <text x="188" y="78" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" opacity="0.7">−</text>
+  <text x="212" y="78" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" opacity="0.7">+</text>
+  <!-- LED bar indicator -->
+  <rect x="165" y="115" width="70" height="5" rx="2.5" fill="#00bcd4" opacity="0.6"/>
+  <!-- Woofer ring -->
+  <circle cx="200" cy="215" r="48" fill="none" stroke="#fff" stroke-width="0.5" opacity="0.2"/>
+  <circle cx="200" cy="215" r="35" fill="#111120" stroke="#fff" stroke-width="0.5" opacity="0.4"/>
+  <circle cx="200" cy="215" r="20" fill="#111120" stroke="#00bcd4" stroke-width="1" opacity="0.5"/>
+  <circle cx="200" cy="215" r="8" fill="#00bcd4" opacity="0.3"/>
+  <!-- Base glow -->
+  <rect x="145" y="325" width="110" height="8" rx="4" fill="#00bcd4" opacity="0.35"/>
+  <text x="200" y="364" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#00bcd4" text-anchor="middle" letter-spacing="3">SPEAKER</text>
+  <text x="200" y="385" font-family="Arial,sans-serif" font-size="11" fill="#4a8fa5" text-anchor="middle">Wi-Fi · Alexa Built-In</text>
+</svg>

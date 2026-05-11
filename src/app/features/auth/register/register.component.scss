@@ -1,0 +1,372 @@
+// ── Page ───────────────────────────────────────────────────────
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background:
+    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(0,188,212,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 90% 100%, rgba(0,136,163,0.08) 0%, transparent 55%),
+    var(--gm-bg);
+}
+
+// ── Card ───────────────────────────────────────────────────────
+.auth-card {
+  width: 100%;
+  max-width: 980px;
+  background: var(--gm-bg-card);
+  border: 1px solid var(--gm-border);
+  border-radius: 16px;
+  padding: 32px 40px 28px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06);
+}
+
+// ── Header ─────────────────────────────────────────────────────
+.auth-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gm-border);
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logo-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #00bcd4, #0088a3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(0,188,212,0.3), 0 4px 14px rgba(0,188,212,0.28);
+
+  .material-icons { color: #fff; font-size: 22px; }
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gm-text);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+.accent { color: #00bcd4; }
+
+.header-text { flex: 1; }
+
+.auth-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gm-text);
+  margin: 0 0 2px;
+  letter-spacing: -0.2px;
+}
+
+.auth-subtitle {
+  font-size: 0.8rem;
+  color: var(--gm-text-sub);
+  margin: 0;
+}
+
+// ── Error ──────────────────────────────────────────────────────
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(244,67,54,0.1);
+  border: 1px solid rgba(244,67,54,0.28);
+  color: #f44336;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-bottom: 18px;
+}
+
+// ── Two-column form grid ───────────────────────────────────────
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0 32px;
+  align-items: start;
+}
+
+.col-divider {
+  background: var(--gm-border);
+  width: 1px;
+  align-self: stretch;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Section labels ─────────────────────────────────────────────
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--gm-text-sub);
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gm-border);
+  }
+}
+
+.section-badge {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00bcd4, #0088a3);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+// ── Field helpers ──────────────────────────────────────────────
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.full-width {
+  width: 100%;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.pincode-field {
+  width: 52%;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+// ── Compact mat-form-field override ───────────────────────────
+:host ::ng-deep {
+  .mat-mdc-form-field-subscript-wrapper { margin-top: 0; }
+  .mat-mdc-text-field-wrapper { padding: 0 10px; }
+  .mat-mdc-form-field { font-size: 0.84rem; }
+  .mat-mdc-floating-label { font-size: 0.84rem; }
+}
+
+// ── Password strength ──────────────────────────────────────────
+.strength-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -2px 0 8px;
+}
+
+.strength-segments {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.strength-seg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gm-bg-elevated);
+  transition: background 0.3s;
+
+  &.active {
+    &.weak   { background: #f44336; }
+    &.fair   { background: #ff9800; }
+    &.good   { background: #ffc107; }
+    &.strong { background: #4caf50; }
+  }
+}
+
+.strength-text {
+  font-size: 0.64rem;
+  font-weight: 700;
+  min-width: 34px;
+  text-align: right;
+
+  &.weak   { color: #f44336; }
+  &.fair   { color: #ff9800; }
+  &.good   { color: #ffc107; }
+  &.strong { color: #4caf50; }
+}
+
+// ── Password hint ──────────────────────────────────────────────
+.password-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: var(--gm-text-muted);
+  margin-top: 4px;
+  line-height: 1.5;
+
+  .hint-icon { font-size: 14px; margin-top: 1px; flex-shrink: 0; color: #00bcd4; opacity: 0.7; }
+}
+
+// ── Footer: terms + submit ─────────────────────────────────────
+.form-footer {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gm-border);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.terms-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+
+  input[type='checkbox'] {
+    margin-top: 2px;
+    accent-color: #00bcd4;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  label {
+    font-size: 0.78rem;
+    color: var(--gm-text-sub);
+    line-height: 1.5;
+    cursor: pointer;
+
+    a {
+      color: #00bcd4;
+      font-weight: 600;
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+.submit-btn {
+  flex-shrink: 0;
+  padding: 11px 28px;
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  box-shadow: 0 3px 14px rgba(0,188,212,0.3);
+  transition: box-shadow 0.2s, transform 0.15s;
+
+  .btn-icon { font-size: 16px; }
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 5px 20px rgba(0,188,212,0.45);
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0,188,212,0.2);
+  }
+
+  &:disabled {
+    background: var(--gm-bg-elevated);
+    color: var(--gm-text-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+// ── Sign-in link ───────────────────────────────────────────────
+.auth-switch {
+  text-align: center;
+  color: var(--gm-text-sub);
+  font-size: 0.8rem;
+  margin: 16px 0 0;
+
+  a {
+    color: #00bcd4;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// ── Success state ──────────────────────────────────────────────
+.success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 0 8px;
+}
+
+.success-icon-wrap {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(76,175,80,0.12);
+  border: 1.5px solid rgba(76,175,80,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.success-icon { font-size: 44px; color: #4caf50; }
+
+.success-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gm-text);
+  margin: 0 0 8px;
+}
+
+.success-msg {
+  color: var(--gm-text-sub);
+  font-size: 0.88rem;
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+// ── Responsive ─────────────────────────────────────────────────
+@media (max-width: 760px) {
+  .auth-card { padding: 24px 18px 20px; }
+  .auth-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .col-divider { display: none; }
+  .form-footer { flex-direction: column; align-items: stretch; gap: 14px; }
+  .submit-btn { width: 100%; justify-content: center; }
+  .pincode-field { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+}

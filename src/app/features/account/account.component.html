@@ -1,0 +1,136 @@
+<div class="account-page">
+  <div class="container">
+    <div class="account-header">
+      <div class="avatar">
+        @if (userInitials) {
+          <span class="avatar-initials">{{ userInitials }}</span>
+        } @else {
+          <span class="material-icons">account_circle</span>
+        }
+      </div>
+      <div class="header-info">
+        <h1>My Account</h1>
+        <p>Manage your profile and orders</p>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <span class="material-icons">logout</span>
+        Logout
+      </button>
+    </div>
+
+    <mat-tab-group animationDuration="200ms" class="account-tabs">
+
+      <!-- Profile Tab -->
+      <mat-tab label="Profile">
+        <div class="tab-panel">
+
+          @if (loadingProfile) {
+            <div class="loading-state">
+              <mat-spinner diameter="36" />
+            </div>
+          } @else {
+            <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="profile-form">
+
+              <div class="email-badge">
+                <span class="material-icons">email</span>
+                {{ profileForm.get('email')?.value }}
+              </div>
+
+              <div class="form-section">
+                <p class="section-label">Personal</p>
+                <div class="form-grid">
+                  <div class="field-group">
+                    <label>Full Name</label>
+                    <input formControlName="name" placeholder="Your full name" />
+                    @if (profileForm.get('name')!.invalid && profileForm.get('name')!.touched) {
+                      <span class="field-error">Name is required</span>
+                    }
+                  </div>
+                  <div class="field-group">
+                    <label>Phone</label>
+                    <input formControlName="phone" type="tel" placeholder="+91 0000000000" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <p class="section-label">Address</p>
+                <div class="field-group">
+                  <label>Street / Area</label>
+                  <input formControlName="addressLine" placeholder="House no., street, area" />
+                  @if (profileForm.get('addressLine')!.invalid && profileForm.get('addressLine')!.touched) {
+                    <span class="field-error">Address is required</span>
+                  }
+                </div>
+                <div class="form-grid three">
+                  <div class="field-group">
+                    <label>City</label>
+                    <input formControlName="city" placeholder="City" />
+                    @if (profileForm.get('city')!.invalid && profileForm.get('city')!.touched) {
+                      <span class="field-error">Required</span>
+                    }
+                  </div>
+                  <div class="field-group">
+                    <label>State</label>
+                    <input formControlName="state" placeholder="State" />
+                    @if (profileForm.get('state')!.invalid && profileForm.get('state')!.touched) {
+                      <span class="field-error">Required</span>
+                    }
+                  </div>
+                  <div class="field-group">
+                    <label>Pincode</label>
+                    <input formControlName="pincode" maxlength="6" placeholder="000000" />
+                    @if (profileForm.get('pincode')!.invalid && profileForm.get('pincode')!.touched) {
+                      <span class="field-error">6 digits required</span>
+                    }
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="save-btn" [disabled]="saving || profileForm.invalid">
+                @if (saving) {
+                  <mat-spinner diameter="16" />
+                  <span>Saving...</span>
+                } @else {
+                  Save Changes
+                }
+              </button>
+
+            </form>
+          }
+        </div>
+      </mat-tab>
+
+      <!-- Orders Tab -->
+      <mat-tab label="Orders ({{ orders.length }})">
+        <div class="tab-panel">
+          <h2>My Orders</h2>
+          @if (orders.length === 0) {
+            <div class="empty-orders">
+              <span class="material-icons">receipt_long</span>
+              <p>No orders yet</p>
+            </div>
+          } @else {
+            <div class="orders-table">
+              <div class="orders-header">
+                <span>Order ID</span><span>Date</span><span>Items</span><span>Total</span><span>Status</span>
+              </div>
+              @for (order of orders; track order.id) {
+                <div class="order-row">
+                  <span class="order-id">#{{ order.id }}</span>
+                  <span class="order-date">{{ order.createdAt | date:'mediumDate' }}</span>
+                  <span class="order-items">{{ order.items.length }} item(s)</span>
+                  <span class="order-total">{{ order.total | currency:'INR':'symbol':'1.0-0' }}</span>
+                  <span class="status-chip" [style.background]="statusColors[order.status] + '22'" [style.color]="statusColors[order.status]">
+                    {{ order.status }}
+                  </span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>

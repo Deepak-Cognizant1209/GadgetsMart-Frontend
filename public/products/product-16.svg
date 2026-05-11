@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="cup" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2a2a2c"/><stop offset="100%" stop-color="#141416"/></linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#343436"/><stop offset="100%" stop-color="#1c1c1e"/></linearGradient>
+    <filter id="ds"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#000" flood-opacity="0.65"/></filter>
+  </defs>
+  <!-- Sennheiser HD 560S - open-back audiophile headphones -->
+  <!-- Thin headband (audiophile style - minimal) -->
+  <path d="M120 200 Q120 75 200 58 Q280 75 280 200" fill="none" stroke="url(#band)" stroke-width="14" stroke-linecap="round" filter="url(#ds)"/>
+  <!-- Adjustment sliders (double-band audiophile style) -->
+  <rect x="113" y="165" width="14" height="44" rx="4" fill="#3a3a3c"/>
+  <rect x="273" y="165" width="14" height="44" rx="4" fill="#3a3a3c"/>
+  <!-- Slider adjustment numbers (subtle) -->
+  <rect x="115" y="175" width="10" height="2" rx="1" fill="#555558"/>
+  <rect x="115" y="180" width="10" height="2" rx="1" fill="#555558"/>
+  <rect x="115" y="185" width="10" height="2" rx="1" fill="#555558"/>
+  <rect x="275" y="175" width="10" height="2" rx="1" fill="#555558"/>
+  <rect x="275" y="180" width="10" height="2" rx="1" fill="#555558"/>
+  <rect x="275" y="185" width="10" height="2" rx="1" fill="#555558"/>
+  <!-- Left ear cup (open-back - you can see the grille) -->
+  <circle cx="110" cy="248" r="72" fill="url(#cup)" filter="url(#ds)"/>
+  <!-- Open-back metal grille ring -->
+  <circle cx="110" cy="248" r="68" fill="none" stroke="#2a2a2c" stroke-width="5"/>
+  <!-- Open-back hexagonal grille pattern (the defining feature) -->
+  <circle cx="110" cy="248" r="62" fill="#111113"/>
+  <!-- Hex grille dots (open-back style) -->
+  <g fill="none" stroke="#2a2a2c" stroke-width="1.2">
+    <polygon points="92,228 100,224 108,228 108,236 100,240 92,236"/>
+    <polygon points="108,228 116,224 124,228 124,236 116,240 108,236"/>
+    <polygon points="100,240 108,236 116,240 116,248 108,252 100,248"/>
+    <polygon points="116,240 124,236 132,240 132,248 124,252 116,248"/>
+    <polygon points="84,240 92,236 100,240 100,248 92,252 84,248"/>
+    <polygon points="92,252 100,248 108,252 108,260 100,264 92,260"/>
+    <polygon points="108,252 116,248 124,252 124,260 116,264 108,260"/>
+    <polygon points="100,264 108,260 116,264 116,272 108,276 100,272"/>
+    <polygon points="116,264 124,260 132,264 132,272 124,276 116,272"/>
+    <polygon points="84,252 92,248 100,252 100,260 92,264 84,260"/>
+    <polygon points="92,264 100,260 108,264 108,272 100,276 92,272"/>
+  </g>
+  <!-- Circular open-back holes (realistic) -->
+  <g fill="#080809">
+    <circle cx="100" cy="232" r="3.5"/>
+    <circle cx="116" cy="232" r="3.5"/>
+    <circle cx="108" cy="244" r="3.5"/>
+    <circle cx="124" cy="244" r="3.5"/>
+    <circle cx="92" cy="244" r="3.5"/>
+    <circle cx="100" cy="256" r="3.5"/>
+    <circle cx="116" cy="256" r="3.5"/>
+    <circle cx="108" cy="268" r="3.5"/>
+    <circle cx="124" cy="268" r="3.5"/>
+    <circle cx="92" cy="268" r="3.5"/>
+    <circle cx="100" cy="216" r="2.5"/>
+    <circle cx="116" cy="216" r="2.5"/>
+    <circle cx="132" cy="256" r="2.5"/>
+    <circle cx="128" cy="232" r="2.5"/>
+  </g>
+  <!-- Sennheiser text on cup frame -->
+  <text x="110" y="302" font-size="7" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="sans-serif" letter-spacing="0.5">Sennheiser</text>
+  <!-- Cable connector left cup -->
+  <circle cx="76" cy="286" r="5" fill="#111"/>
+  <!-- Right ear cup (mirror) -->
+  <circle cx="290" cy="248" r="72" fill="url(#cup)" filter="url(#ds)"/>
+  <circle cx="290" cy="248" r="68" fill="none" stroke="#2a2a2c" stroke-width="5"/>
+  <circle cx="290" cy="248" r="62" fill="#111113"/>
+  <!-- Right grille -->
+  <g fill="none" stroke="#2a2a2c" stroke-width="1.2">
+    <polygon points="272,228 280,224 288,228 288,236 280,240 272,236"/>
+    <polygon points="288,228 296,224 304,228 304,236 296,240 288,236"/>
+    <polygon points="280,240 288,236 296,240 296,248 288,252 280,248"/>
+    <polygon points="296,240 304,236 312,240 312,248 304,252 296,248"/>
+    <polygon points="264,240 272,236 280,240 280,248 272,252 264,248"/>
+    <polygon points="272,252 280,248 288,252 288,260 280,264 272,260"/>
+    <polygon points="288,252 296,248 304,252 304,260 296,264 288,260"/>
+    <polygon points="280,264 288,260 296,264 296,272 288,276 280,272"/>
+    <polygon points="272,264 280,260 288,264 288,272 280,276 272,272"/>
+  </g>
+  <g fill="#080809">
+    <circle cx="280" cy="232" r="3.5"/>
+    <circle cx="296" cy="232" r="3.5"/>
+    <circle cx="288" cy="244" r="3.5"/>
+    <circle cx="304" cy="244" r="3.5"/>
+    <circle cx="272" cy="244" r="3.5"/>
+    <circle cx="280" cy="256" r="3.5"/>
+    <circle cx="296" cy="256" r="3.5"/>
+    <circle cx="288" cy="268" r="3.5"/>
+    <circle cx="304" cy="268" r="3.5"/>
+    <circle cx="272" cy="268" r="3.5"/>
+  </g>
+  <!-- HD 560S label -->
+  <text x="200" y="370" font-size="9" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-family="sans-serif" letter-spacing="1">HD 560S</text>
+</svg>

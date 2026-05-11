@@ -1,0 +1,54 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <span class="material-icons">devices</span>
+      <span>Gadgets <span class="accent">Mart</span></span>
+    </div>
+    <h1 class="auth-title">Welcome Back</h1>
+    <p class="auth-subtitle">Sign in to your account</p>
+
+    @if (error) {
+      <div class="error-banner">
+        <span class="material-icons">error_outline</span> {{ error }}
+      </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email Address</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="you@example.com" />
+        <mat-icon matPrefix>email</mat-icon>
+        @if (email.invalid && email.touched) {
+          <mat-error>{{ email.errors?.['required'] ? 'Email is required' : 'Invalid email address' }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+        <mat-icon matPrefix>lock</mat-icon>
+        <button type="button" matSuffix mat-icon-button (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        @if (password.invalid && password.touched) {
+          <mat-error>{{ password.errors?.['required'] ? 'Password is required' : 'Min 6 characters' }}</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-row">
+        <mat-checkbox formControlName="rememberMe" color="primary">Remember me</mat-checkbox>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="loading">
+        @if (loading) {
+          <mat-spinner diameter="20" />
+        } @else {
+          Sign In
+        }
+      </button>
+    </form>
+
+    <p class="auth-switch">Don't have an account? <a routerLink="/register">Create one</a></p>
+  </div>
+</div>

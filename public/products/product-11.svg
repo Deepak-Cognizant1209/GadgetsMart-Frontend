@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f5f5f7"/><stop offset="100%" stop-color="#d8d8dc"/></linearGradient>
+    <linearGradient id="touch" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8e8ec"/><stop offset="100%" stop-color="#d0d0d4"/></linearGradient>
+    <radialGradient id="shine" cx="35%" cy="30%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,0.8)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>
+    <filter id="ds"><feDropShadow dx="0" dy="10" stdDeviation="20" flood-color="rgba(0,0,0,0.5)"/></filter>
+  </defs>
+  <!-- Apple Magic Mouse - top-down view, white/silver -->
+  <!-- Shadow/base -->
+  <ellipse cx="200" cy="230" rx="85" ry="120" fill="rgba(0,0,0,0.2)" filter="url(#ds)"/>
+  <!-- Main body - flat ergonomic oval -->
+  <path d="M142 140 Q145 90 200 82 Q255 90 258 140 Q268 175 264 240 Q260 305 200 320 Q140 305 136 240 Q132 175 142 140 Z" fill="url(#body)"/>
+  <!-- Multi-Touch surface (top portion) -->
+  <path d="M148 145 Q150 105 200 96 Q250 105 252 145 Q258 175 254 215 Q248 240 200 248 Q152 240 146 215 Q142 175 148 145 Z" fill="url(#touch)"/>
+  <!-- Touch surface lines (subtle gesture indicators) -->
+  <line x1="155" y1="160" x2="245" y2="160" stroke="rgba(180,180,184,0.5)" stroke-width="0.8"/>
+  <line x1="150" y1="175" x2="250" y2="175" stroke="rgba(180,180,184,0.4)" stroke-width="0.8"/>
+  <line x1="148" y1="190" x2="252" y2="190" stroke="rgba(180,180,184,0.4)" stroke-width="0.8"/>
+  <line x1="148" y1="205" x2="252" y2="205" stroke="rgba(180,180,184,0.4)" stroke-width="0.8"/>
+  <line x1="148" y1="220" x2="252" y2="220" stroke="rgba(180,180,184,0.4)" stroke-width="0.8"/>
+  <!-- Left/right click divider line -->
+  <line x1="200" y1="96" x2="200" y2="248" stroke="rgba(180,180,184,0.6)" stroke-width="0.8"/>
+  <!-- Apple logo -->
+  <ellipse cx="200" cy="268" rx="10" ry="12" fill="rgba(180,180,185,0.7)"/>
+  <circle cx="200" cy="261" r="5.5" fill="rgba(255,255,255,0.9)"/>
+  <rect cx="198" cy="255" width="4" height="7" rx="2" fill="rgba(255,255,255,0.9)"/>
+  <!-- Better Apple logo -->
+  <g transform="translate(200,268)" opacity="0.5">
+    <path d="M0,-12 C5,-12 8,-9 8,-5 C8,-1 5,3 0,3 C-5,3 -8,-1 -8,-5 C-8,-9 -5,-12 0,-12 Z" fill="#b8b8bc"/>
+    <path d="M3,-13 C3,-15 4,-16 4,-16" stroke="#b8b8bc" stroke-width="1.5" fill="none"/>
+  </g>
+  <!-- Simplified Apple logo -->
+  <text x="200" y="274" font-size="16" text-anchor="middle" fill="rgba(160,160,164,0.6)" font-family="sans-serif"> </text>
+  <!-- Lightning port bottom -->
+  <rect x="193" y="316" width="14" height="5" rx="2.5" fill="#c8c8cc"/>
+  <!-- Body shine/highlight -->
+  <path d="M150 140 Q155 100 200 94 Q200 120 175 135 Q162 142 150 136 Z" fill="url(#shine)" opacity="0.6"/>
+  <!-- Bottom edge (rubber feet implied) -->
+  <ellipse cx="170" cy="318" rx="8" ry="3" fill="rgba(200,200,205,0.4)"/>
+  <ellipse cx="230" cy="318" rx="8" ry="3" fill="rgba(200,200,205,0.4)"/>
+</svg>

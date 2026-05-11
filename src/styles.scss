@@ -1,0 +1,230 @@
+@use 'sass:color';
+@use '@angular/material' as mat;
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+// ============================================================
+// Angular Material M3 Dark Theme
+// ============================================================
+html {
+  height: 100%;
+
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$cyan-palette,
+        tertiary: mat.$orange-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+// ============================================================
+// CSS Custom Properties
+// ============================================================
+:root {
+  --gm-bg:            #f0f4f8;
+  --gm-bg-card:       #ffffff;
+  --gm-bg-secondary:  #e4eaf0;
+  --gm-bg-elevated:   #edf1f7;
+  --gm-border:        #d0d7de;
+  --gm-border-soft:   rgba(0,0,0,0.12);
+  --gm-text:          #1a1a2e;
+  --gm-text-sub:      #57606a;
+  --gm-text-muted:    #8c959f;
+  --gm-input-bg:      rgba(0,0,0,0.04);
+  --gm-hover-bg:      rgba(0,0,0,0.05);
+  --gm-shadow:        rgba(0,0,0,0.12);
+  --gm-shadow-card:   0 8px 24px rgba(0,0,0,0.12);
+  --gm-navbar-bg:     rgba(240, 244, 248, 0.97);
+  --gm-skeleton-base: #dde3ea;
+  --gm-skeleton-shine:#c4cdd8;
+}
+
+// ============================================================
+// Global Base Styles
+// ============================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--gm-bg);
+  color: $text-primary;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  margin: 0;
+  height: 100%;
+  line-height: 1.6;
+  @include custom-scrollbar;
+}
+
+/* ── Product tabs: force label text to black ── */
+.product-tabs {
+  --mat-tab-inactive-label-text-color: #000000;
+  --mat-tab-active-label-text-color: #00bcd4;
+
+  .mat-mdc-tab .mdc-tab__text-label,
+  .mat-mdc-tab:hover .mdc-tab__text-label {
+    color: #000000 !important;
+  }
+
+  .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: #00bcd4 !important;
+  }
+}
+
+a {
+  color: $color-cyan;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: color.adjust($color-cyan, $lightness: 10%);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 $spacing-md;
+  font-weight: 500;
+  line-height: 1.3;
+  color: $text-primary;
+}
+
+p {
+  margin: 0 0 $spacing-md;
+  color: $text-secondary;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: $font-family;
+}
+
+// ============================================================
+// Angular Material Overrides for Dark Theme
+// ============================================================
+.mat-mdc-card {
+  background-color: $bg-card !important;
+  border: 1px solid $border-color;
+}
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: #{$bg-secondary};
+}
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: #{$bg-elevated};
+  --mdc-snackbar-supporting-text-color: #{$text-primary};
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-drawer-container {
+  background-color: $bg-primary !important;
+  color: $text-primary !important;
+}
+
+.mat-drawer {
+  background-color: $bg-secondary !important;
+}
+
+// ============================================================
+// Utility Classes
+// ============================================================
+.container {
+  @include container;
+}
+
+.text-cyan { color: $color-cyan; }
+.text-orange { color: $color-orange; }
+.text-muted { color: $text-secondary; }
+.text-success { color: $color-success; }
+.text-error { color: $color-error; }
+
+.bg-card { background-color: $bg-card; }
+.bg-elevated { background-color: $bg-elevated; }
+
+.d-flex { display: flex; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-sm { gap: $spacing-sm; }
+.gap-md { gap: $spacing-md; }
+.gap-lg { gap: $spacing-lg; }
+
+.w-100 { width: 100%; }
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+
+.price-original {
+  text-decoration: line-through;
+  color: $text-disabled;
+  font-size: $font-size-sm;
+}
+
+.price-discounted {
+  color: $color-cyan;
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-xs;
+  font-weight: 500;
+
+  &.badge-success { background-color: rgba($color-success, 0.2); color: $color-success; }
+  &.badge-error { background-color: rgba($color-error, 0.2); color: $color-error; }
+  &.badge-warning { background-color: rgba($color-warning, 0.2); color: $color-warning; }
+  &.badge-info { background-color: rgba($color-cyan, 0.2); color: $color-cyan; }
+}
+
+// ============================================================
+// Page Layout
+// ============================================================
+.page-content {
+  min-height: calc(100vh - #{$navbar-height});
+  padding-top: $navbar-height;
+}
+
+.section {
+  padding: $spacing-2xl 0;
+}
+
+.section-title {
+  font-size: $font-size-xl;
+  font-weight: 500;
+  color: var(--gm-text);
+  margin-bottom: $spacing-lg;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background-color: $color-cyan;
+    margin-top: $spacing-sm;
+    border-radius: 2px;
+  }
+}
+

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2a2a2e"/><stop offset="100%" stop-color="#161618"/></linearGradient>
+    <linearGradient id="arch" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#222224"/><stop offset="100%" stop-color="#3a3a3e"/></linearGradient>
+    <filter id="ds"><feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.7"/></filter>
+  </defs>
+  <!-- Microsoft Arc Mouse - side profile view showing distinctive arch shape -->
+  <!-- Flat base shadow -->
+  <ellipse cx="200" cy="330" rx="140" ry="16" fill="rgba(0,0,0,0.4)"/>
+  <!-- The distinctive arched body (side profile) -->
+  <!-- Bottom flat part -->
+  <rect x="70" y="308" width="260" height="22" rx="4" fill="url(#body)" filter="url(#ds)"/>
+  <!-- Arch curve (the signature arc) -->
+  <path d="M70 308 Q90 240 130 200 Q160 170 200 162 Q240 170 270 200 Q310 240 330 308 Z" fill="url(#arch)" filter="url(#ds)"/>
+  <!-- Top surface of arch (slightly lighter) -->
+  <path d="M80 302 Q100 238 138 200 Q165 175 200 168 Q235 175 262 200 Q300 238 320 302 Z" fill="#2e2e32"/>
+  <!-- Touch scroll strip (top center of arch) -->
+  <path d="M168 172 Q184 165 200 163 Q216 165 232 172 L228 182 Q216 175 200 173 Q184 175 172 182 Z" fill="#444448"/>
+  <path d="M170 172 Q184 166 200 164 Q216 166 230 172" stroke="#555558" stroke-width="2" fill="none"/>
+  <!-- Scroll strip indicator -->
+  <ellipse cx="200" cy="170" rx="14" ry="5" fill="#3a3a3e"/>
+  <!-- Microsoft logo (four colored squares) on arch -->
+  <rect x="189" y="225" width="8" height="8" rx="1" fill="#f25022" opacity="0.8"/>
+  <rect x="199" y="225" width="8" height="8" rx="1" fill="#7fba00" opacity="0.8"/>
+  <rect x="189" y="235" width="8" height="8" rx="1" fill="#00a4ef" opacity="0.8"/>
+  <rect x="199" y="235" width="8" height="8" rx="1" fill="#ffb900" opacity="0.8"/>
+  <!-- Bluetooth connect button (small, on arch side) -->
+  <circle cx="280" cy="290" r="6" fill="#333336"/>
+  <circle cx="280" cy="290" r="3.5" fill="#2a2a2e"/>
+  <!-- Left/right click zones -->
+  <line x1="200" y1="165" x2="200" y2="300" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+  <!-- USB dongle port -->
+  <rect x="192" y="324" width="16" height="6" rx="3" fill="#111"/>
+  <!-- Body edge highlight -->
+  <path d="M90 295 Q110 235 148 197 Q172 177 200 172 Q200 180 176 196 Q144 222 120 290 Z" fill="rgba(255,255,255,0.04)"/>
+</svg>

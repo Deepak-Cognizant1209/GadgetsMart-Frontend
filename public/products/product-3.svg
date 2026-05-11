@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c8c8ce"/><stop offset="100%" stop-color="#9a9aa0"/></linearGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a2235"/><stop offset="100%" stop-color="#0a0e1c"/></linearGradient>
+    <linearGradient id="kick" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#b0b0b6"/><stop offset="100%" stop-color="#d4d4da"/></linearGradient>
+    <filter id="ds"><feDropShadow dx="2" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.55"/></filter>
+  </defs>
+  <!-- Surface Pro 9 - platinum silver, portrait -->
+  <rect x="106" y="22" width="188" height="340" rx="8" fill="url(#body)" filter="url(#ds)"/>
+  <!-- Kickstand line at bottom edge -->
+  <rect x="106" y="355" width="188" height="7" rx="3" fill="url(#kick)"/>
+  <!-- Surface Connect port left -->
+  <rect x="102" y="150" width="6" height="20" rx="3" fill="#9a9aa0"/>
+  <!-- USB-C ports left -->
+  <rect x="102" y="180" width="6" height="12" rx="3" fill="#9a9aa0"/>
+  <rect x="102" y="200" width="6" height="12" rx="3" fill="#9a9aa0"/>
+  <!-- Volume right top -->
+  <rect x="292" y="80" width="5" height="24" rx="2" fill="#b0b0b6"/>
+  <rect x="292" y="110" width="5" height="24" rx="2" fill="#b0b0b6"/>
+  <!-- Power button top right -->
+  <rect x="258" y="18" width="24" height="6" rx="3" fill="#b0b0b6"/>
+  <!-- Screen bezel (minimal - PixelSense) -->
+  <rect x="114" y="34" width="172" height="314" rx="4" fill="#111"/>
+  <!-- Screen -->
+  <rect x="118" y="38" width="164" height="306" rx="3" fill="url(#scr)"/>
+  <!-- Taskbar (Windows 11) -->
+  <rect x="118" y="314" width="164" height="30" rx="0" fill="#1c1c2a"/>
+  <rect x="186" y="319" width="28" height="20" rx="4" fill="rgba(255,255,255,0.1)"/>
+  <!-- Windows logo on taskbar -->
+  <rect x="192" y="323" width="7" height="7" rx="1" fill="#00aeff" opacity="0.8"/>
+  <rect x="200" y="323" width="7" height="7" rx="1" fill="#00aeff" opacity="0.5"/>
+  <rect x="192" y="331" width="7" height="7" rx="1" fill="#00aeff" opacity="0.5"/>
+  <rect x="200" y="331" width="7" height="7" rx="1" fill="#00aeff" opacity="0.3"/>
+  <!-- Desktop wallpaper -->
+  <rect x="118" y="50" width="164" height="264" fill="rgba(0,60,120,0.3)"/>
+  <rect x="118" y="50" width="164" height="264" fill="rgba(20,80,150,0.2)"/>
+  <!-- App windows on desktop -->
+  <rect x="124" y="58" width="70" height="50" rx="4" fill="rgba(255,255,255,0.08)"/>
+  <rect x="200" y="58" width="76" height="50" rx="4" fill="rgba(255,255,255,0.06)"/>
+  <rect x="124" y="116" width="152" height="80" rx="4" fill="rgba(255,255,255,0.05)"/>
+  <rect x="124" y="204" width="152" height="60" rx="4" fill="rgba(255,255,255,0.04)"/>
+  <!-- Windows logo (large, on back) shown as screen reflection -->
+  <!-- Camera top center -->
+  <circle cx="200" cy="31" r="3" fill="#111"/>
+  <circle cx="200" cy="31" r="1.8" fill="#1a1a1a"/>
+  <!-- Surface logo bottom center on body -->
+  <text x="200" y="352" font-size="8" text-anchor="middle" fill="rgba(0,0,0,0.4)" font-family="sans-serif" letter-spacing="1">Surface</text>
+  <!-- Body highlight -->
+  <rect x="106" y="22" width="188" height="40" rx="8" fill="rgba(255,255,255,0.15)"/>
+</svg>

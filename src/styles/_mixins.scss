@@ -1,0 +1,174 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+// ============================================================
+// Responsive breakpoints
+// ============================================================
+@mixin xs-up {
+  @media (min-width: #{$bp-xs}) { @content; }
+}
+@mixin sm-up {
+  @media (min-width: #{$bp-sm}) { @content; }
+}
+@mixin md-up {
+  @media (min-width: #{$bp-md}) { @content; }
+}
+@mixin lg-up {
+  @media (min-width: #{$bp-lg}) { @content; }
+}
+@mixin xl-up {
+  @media (min-width: #{$bp-xl}) { @content; }
+}
+
+@mixin xs-down {
+  @media (max-width: #{$bp-xs - 1px}) { @content; }
+}
+@mixin sm-down {
+  @media (max-width: #{$bp-sm - 1px}) { @content; }
+}
+@mixin md-down {
+  @media (max-width: #{$bp-md - 1px}) { @content; }
+}
+
+// ============================================================
+// Layout helpers
+// ============================================================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @include md-up {
+    padding: 0 $spacing-lg;
+  }
+}
+
+// ============================================================
+// Typography helpers
+// ============================================================
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ============================================================
+// Card styles
+// ============================================================
+@mixin card($padding: $spacing-md) {
+  background-color: $bg-card;
+  border-radius: $border-radius-md;
+  border: 1px solid $border-color;
+  padding: $padding;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+// ============================================================
+// Button variants
+// ============================================================
+@mixin btn-primary {
+  background-color: $color-cyan;
+  color: $bg-primary;
+  border: none;
+  border-radius: $border-radius-sm;
+  padding: $spacing-sm $spacing-lg;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    background-color: color.adjust($color-cyan, $lightness: -8%);
+    box-shadow: $shadow-cyan;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-orange {
+  background-color: $color-orange;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-sm;
+  padding: $spacing-sm $spacing-lg;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: color.adjust($color-orange, $lightness: -8%);
+  }
+}
+
+// ============================================================
+// Scrollbar styling
+// ============================================================
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $bg-secondary;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $border-color;
+    border-radius: 3px;
+
+    &:hover {
+      background: $color-muted;
+    }
+  }
+}
+
+// ============================================================
+// Skeleton loader animation
+// ============================================================
+@mixin skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    $bg-card 25%,
+    $bg-elevated 50%,
+    $bg-card 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

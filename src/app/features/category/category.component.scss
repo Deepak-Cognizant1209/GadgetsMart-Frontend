@@ -1,0 +1,172 @@
+.category-page { padding-bottom: 48px; }
+
+.breadcrumb-bar {
+  background: var(--gm-bg-secondary); padding: 10px 0; border-bottom: 1px solid var(--gm-border);
+  font-size: 0.85rem; color: var(--gm-text-sub);
+  a { color: var(--gm-text-sub); text-decoration: none; &:hover { color: #00bcd4; } }
+  .sep { font-size: 16px; vertical-align: middle; margin: 0 4px; }
+  .current { color: var(--gm-text); }
+}
+
+.layout { padding-top: 24px; }
+.filter-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+}
+.page-title { font-size: 1.5rem; margin: 0; }
+.filter-controls { display: flex; align-items: center; gap: 12px; }
+
+.filter-toggle-btn {
+  display: flex; align-items: center; gap: 6px; padding: 8px 16px;
+  background: var(--gm-bg-card); border: 1px solid var(--gm-border); color: var(--gm-text);
+  border-radius: 6px; cursor: pointer; font-size: 0.875rem; transition: all 0.15s;
+  &:hover { border-color: #00bcd4; color: #00bcd4; }
+  .filter-badge {
+    background: #00bcd4; color: #000; border-radius: 50%;
+    width: 18px; height: 18px; font-size: 0.7rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+}
+.sort-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--gm-bg-card);
+  border: 1px solid var(--gm-border);
+  border-radius: 8px;
+  padding: 0 12px;
+  height: 38px;
+  transition: border-color 0.18s;
+  &:focus-within { border-color: #00bcd4; }
+}
+.sort-icon {
+  font-size: 17px;
+  color: var(--gm-text-muted);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.sort-select {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--gm-text);
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  min-width: 148px;
+  option { background: var(--gm-bg-card); color: var(--gm-text); }
+}
+
+.content-layout { display: flex; gap: 24px; align-items: flex-start; }
+
+/* ── Sidebar ── */
+.sidebar {
+  width: 260px; flex-shrink: 0; background: var(--gm-bg-secondary);
+  border: 1px solid var(--gm-border); border-radius: 12px; padding: 20px;
+  height: fit-content; position: sticky; top: 80px;
+  @media (max-width: 768px) { width: 100%; position: static; }
+}
+
+.sidebar-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--gm-border);
+}
+.sidebar-title-row {
+  display: flex; align-items: center; gap: 8px;
+  h3 { margin: 0; font-size: 1rem; color: var(--gm-text); }
+  .filter-icon { font-size: 18px; color: #00bcd4; }
+  .filter-count-badge {
+    background: #00bcd4; color: #000; border-radius: 50%;
+    width: 20px; height: 20px; font-size: 0.72rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+}
+.clear-all-btn {
+  background: none; border: 1px solid var(--gm-border); color: #00bcd4;
+  font-size: 0.78rem; cursor: pointer; padding: 4px 10px; border-radius: 4px;
+  transition: background 0.15s;
+  &:hover { background: rgba(0,188,212,0.1); }
+}
+
+/* ── Active filter tags ── */
+.active-filters {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--gm-border);
+}
+.active-filter-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(0,188,212,0.12); border: 1px solid rgba(0,188,212,0.35);
+  color: #00bcd4; border-radius: 20px; padding: 3px 8px 3px 10px;
+  font-size: 0.78rem; font-weight: 500;
+  .remove-filter {
+    background: none; border: none; color: #00bcd4; cursor: pointer;
+    display: flex; align-items: center; padding: 0; line-height: 1;
+    .material-icons { font-size: 14px; }
+    &:hover { color: var(--gm-text); }
+  }
+}
+
+/* ── Filter groups ── */
+.filter-group {
+  margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--gm-border);
+  &:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+}
+.filter-group-header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+  h4 {
+    font-size: 0.78rem; color: var(--gm-text-muted); margin: 0;
+    text-transform: uppercase; letter-spacing: 0.7px; flex: 1;
+  }
+  .filter-active-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #00bcd4; flex-shrink: 0;
+  }
+}
+
+/* ── Price ── */
+.price-display {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+  .price-value { font-size: 0.88rem; color: var(--gm-text); font-weight: 500; }
+  .price-dash { color: var(--gm-text-muted); }
+}
+.price-inputs { display: flex; flex-direction: column; gap: 8px; }
+.range-input { width: 100%; accent-color: #00bcd4; cursor: pointer; }
+
+/* ── Brand chips ── */
+.brand-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.brand-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 5px 12px; border: 1px solid var(--gm-border);
+  background: var(--gm-bg-card); color: var(--gm-text-sub); border-radius: 20px;
+  cursor: pointer; font-size: 0.82rem; transition: all 0.15s;
+  .chip-check { font-size: 13px; }
+  &:hover:not(.selected) { border-color: #00bcd4; color: var(--gm-text); }
+  &.selected { background: #00bcd4; border-color: #00bcd4; color: #000; font-weight: 600; }
+}
+
+/* ── Rating ── */
+.rating-btn {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  text-align: left; padding: 8px 12px;
+  background: var(--gm-bg-card); border: 1px solid var(--gm-border); color: var(--gm-text-sub);
+  border-radius: 6px; cursor: pointer; font-size: 0.85rem;
+  margin-bottom: 6px; transition: all 0.15s;
+  .stars { color: #ffc107; letter-spacing: 1px; }
+  &:hover { border-color: #00bcd4; color: var(--gm-text); }
+  &.active { background: rgba(0,188,212,0.12); border-color: #00bcd4; color: #00bcd4; }
+}
+
+/* ── Products area ── */
+.products-area { flex: 1; min-width: 0; }
+.result-count {
+  color: var(--gm-text-sub); font-size: 0.85rem; margin-bottom: 16px;
+  strong { color: var(--gm-text); }
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  @media (max-width: 1200px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 576px) { grid-template-columns: 1fr; }
+}
+
+mat-paginator { margin-top: 24px; background: var(--gm-bg-card); border-radius: 8px; }

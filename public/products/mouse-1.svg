@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1b2a"/>
+      <stop offset="100%" stop-color="#1d3557"/>
+    </linearGradient>
+    <linearGradient id="body-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3050"/>
+      <stop offset="100%" stop-color="#0c1a2e"/>
+    </linearGradient>
+    <radialGradient id="highlight" cx="40%" cy="25%">
+      <stop offset="0%" stop-color="#00bcd4" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00bcd4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Mouse shadow -->
+  <ellipse cx="202" cy="295" rx="78" ry="14" fill="#000" opacity="0.35"/>
+  <!-- Mouse body -->
+  <path d="M 200 80 C 145 80 130 130 128 190 C 126 240 140 285 165 295 C 180 302 220 302 235 295 C 260 285 274 240 272 190 C 270 130 255 80 200 80 Z" fill="url(#body-grad)" stroke="#00bcd4" stroke-width="2"/>
+  <!-- Highlight reflection -->
+  <path d="M 200 80 C 145 80 130 130 128 190 C 126 240 140 285 165 295 C 180 302 220 302 235 295 C 260 285 274 240 272 190 C 270 130 255 80 200 80 Z" fill="url(#highlight)"/>
+  <!-- Left/right button divider -->
+  <line x1="200" y1="85" x2="200" y2="198" stroke="#00bcd4" stroke-width="1.5" opacity="0.5"/>
+  <!-- Button separation curve top -->
+  <path d="M 128 198 C 150 210 170 215 200 215 C 230 215 250 210 272 198" stroke="#00bcd4" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <!-- Scroll wheel housing -->
+  <rect x="187" y="135" width="26" height="55" rx="13" fill="#0c1a2e" stroke="#00bcd4" stroke-width="1.5"/>
+  <!-- Scroll wheel ridges -->
+  <rect x="190" y="145" width="20" height="4" rx="2" fill="#00bcd4" opacity="0.7"/>
+  <rect x="190" y="154" width="20" height="4" rx="2" fill="#00bcd4" opacity="0.55"/>
+  <rect x="190" y="163" width="20" height="4" rx="2" fill="#00bcd4" opacity="0.4"/>
+  <rect x="190" y="172" width="20" height="4" rx="2" fill="#00bcd4" opacity="0.25"/>
+  <!-- DPI button -->
+  <rect x="190" y="215" width="20" height="7" rx="3.5" fill="#00bcd4" opacity="0.4"/>
+  <!-- Side grip texture -->
+  <rect x="128" y="220" width="8" height="5" rx="2.5" fill="#00bcd4" opacity="0.2"/>
+  <rect x="128" y="230" width="8" height="5" rx="2.5" fill="#00bcd4" opacity="0.15"/>
+  <rect x="128" y="240" width="8" height="5" rx="2.5" fill="#00bcd4" opacity="0.1"/>
+  <!-- Logitech-style logo area -->
+  <circle cx="200" cy="260" r="15" fill="#0c1a2e" stroke="#00bcd4" stroke-width="1" opacity="0.6"/>
+  <text x="200" y="265" font-family="Arial,sans-serif" font-weight="900" font-size="11" fill="#00bcd4" text-anchor="middle" opacity="0.7">MX</text>
+  <!-- USB receiver -->
+  <rect x="193" y="302" width="14" height="8" rx="2" fill="#1e3050" stroke="#00bcd4" stroke-width="1" opacity="0.5"/>
+  <!-- Label -->
+  <text x="200" y="360" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#00bcd4" text-anchor="middle" letter-spacing="3">MOUSE</text>
+  <text x="200" y="382" font-family="Arial,sans-serif" font-size="11" fill="#4a8fa5" text-anchor="middle">8000 DPI · Wireless</text>
+</svg>
