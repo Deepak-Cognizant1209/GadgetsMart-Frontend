@@ -54,7 +54,7 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Featured Products</h2>
-      <a routerLink="/category/Tablets" class="view-all">View All <span class="material-icons">chevron_right</span></a>
+      <a routerLink="/category/All" class="view-all">View All <span class="material-icons">chevron_right</span></a>
     </div>
     <div class="product-grid">
       @for (product of featuredProducts; track product.id) {
@@ -79,7 +79,7 @@
       <div class="promo-card promo-card-2">
         <div class="promo-content">
           <span class="promo-tag">New Arrivals</span>
-          <h3>Latest Laptops 2026</h3>
+          <h3>Latest Laptops 2025</h3>
           <p>Experience next-gen performance</p>
           <a routerLink="/category/Laptops" class="promo-btn">Explore</a>
         </div>
@@ -98,7 +98,7 @@
       @for (product of featuredProducts.slice(0, 6); track product.id) {
         @if (product.discountPrice) {
           <a [routerLink]="['/product', product.id]" class="offer-card">
-            <img [src]="product.images[0]" [alt]="product.name" />
+            <img [src]="product.images[0] ?? ''" [alt]="product.name" loading="lazy" />
             <div class="offer-info">
               <p class="offer-name">{{ product.name }}</p>
               <div class="offer-prices">

@@ -35,7 +35,9 @@
 .checkout-btn {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   width: 100%; padding: 14px; margin-top: 20px; background: #ff6600; color: #fff;
-  border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: background 0.15s;
-  &:hover { background: #e55a00; }
+  border: none; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1rem;
+  transition: background 0.15s; cursor: pointer;
+  &:hover:not(:disabled) { background: #e55a00; }
+  &:disabled { opacity: 0.7; cursor: not-allowed; }
 }
 .security-note { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--gm-text-sub); font-size: 0.75rem; margin-top: 12px; .material-icons { font-size: 16px; color: #4caf50; } }

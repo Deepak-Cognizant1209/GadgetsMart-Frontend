@@ -159,8 +159,8 @@
           }
           <div class="sidebar-divider"></div>
           <div class="sidebar-row"><span>Subtotal</span><span>{{ subtotal | currency:'INR':'symbol':'1.0-0' }}</span></div>
-          <div class="sidebar-row"><span>Shipping</span><span class="free">FREE</span></div>
-          <div class="sidebar-row"><span>Tax (10%)</span><span>{{ getTax(subtotal) | currency:'INR':'symbol':'1.0-0' }}</span></div>
+          <div class="sidebar-row"><span>Shipping</span><span>{{ getShipping() | currency:'INR':'symbol':'1.0-0' }}</span></div>
+          <div class="sidebar-row"><span>Tax (18% GST)</span><span>{{ getTax(subtotal) | currency:'INR':'symbol':'1.0-0' }}</span></div>
           <div class="sidebar-divider"></div>
           <div class="sidebar-row total"><span>Total</span><span class="total-price">{{ getTotal(subtotal) | currency:'INR':'symbol':'1.0-0' }}</span></div>
         </div>

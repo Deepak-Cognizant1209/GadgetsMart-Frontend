@@ -105,7 +105,11 @@
       <mat-tab label="Orders ({{ orders.length }})">
         <div class="tab-panel">
           <h2>My Orders</h2>
-          @if (orders.length === 0) {
+          @if (loadingOrders) {
+            <div class="loading-state">
+              <mat-spinner diameter="36" />
+            </div>
+          } @else if (orders.length === 0) {
             <div class="empty-orders">
               <span class="material-icons">receipt_long</span>
               <p>No orders yet</p>
@@ -113,18 +117,38 @@
           } @else {
             <div class="orders-table">
               <div class="orders-header">
-                <span>Order ID</span><span>Date</span><span>Items</span><span>Total</span><span>Status</span>
+                <span></span><span>Order ID</span><span>Date</span><span>Total</span><span>Status</span>
               </div>
               @for (order of orders; track order.id) {
-                <div class="order-row">
+                <div class="order-row" (click)="toggleOrder(order.id)" [class.expanded]="expandedOrderId === order.id">
+                  <span class="expand-icon material-icons">
+                    {{ expandedOrderId === order.id ? 'expand_less' : 'expand_more' }}
+                  </span>
                   <span class="order-id">#{{ order.id }}</span>
                   <span class="order-date">{{ order.createdAt | date:'mediumDate' }}</span>
-                  <span class="order-items">{{ order.items.length }} item(s)</span>
-                  <span class="order-total">{{ order.total | currency:'INR':'symbol':'1.0-0' }}</span>
+                  <span class="order-total">{{ order.totalAmount | currency:'INR':'symbol':'1.0-0' }}</span>
                   <span class="status-chip" [style.background]="statusColors[order.status] + '22'" [style.color]="statusColors[order.status]">
                     {{ order.status }}
                   </span>
                 </div>
+                @if (expandedOrderId === order.id) {
+                  <div class="order-items-panel">
+                    <div class="items-panel-header">
+                      <span>Product ID</span>
+                      <span>Qty</span>
+                      <span>Unit Price</span>
+                      <span>Line Total</span>
+                    </div>
+                    @for (item of order.items; track item.productId) {
+                      <div class="items-panel-row">
+                        <a class="item-pid" [routerLink]="['/product', item.productId]">Product #{{ item.productId }}</a>
+                        <span>× {{ item.quantity }}</span>
+                        <span>{{ item.priceAtPurchase | currency:'INR':'symbol':'1.0-0' }}</span>
+                        <span class="item-line-total">{{ item.priceAtPurchase * item.quantity | currency:'INR':'symbol':'1.0-0' }}</span>
+                      </div>
+                    }
+                  </div>
+                }
               }
             </div>
           }

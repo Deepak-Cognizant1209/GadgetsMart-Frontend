@@ -9,11 +9,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { selectCartCount } from '../../../store/cart/cart.selectors';
 import { CartActions } from '../../../store/cart/cart.actions';
+import { ProductActions } from '../../../store/product/product.actions';
+import { ThemeService } from '../../../core/services/theme.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { User } from '../../../core/models/user.model';
+
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, AsyncPipe, MatIconModule, MatMenuModule, MatButtonModule, FormsModule],
+  imports: [RouterLink, RouterLinkActive, AsyncPipe, MatIconModule, MatMenuModule, MatButtonModule, FormsModule],
   template: `
     <nav class="navbar">
       <div class="navbar-inner">
@@ -44,7 +47,14 @@ import { User } from '../../../core/models/user.model';
         <!-- Actions -->
         <div class="nav-actions">
 
-          <a class="icon-btn cart-btn" routerLink="/cart" aria-label="Cart">
+          <!-- Theme toggle -->
+          <button class="icon-btn theme-btn" (click)="theme.toggle()"
+                  [title]="theme.isDark ? 'Light Mode' : 'Dark Mode'" aria-label="Toggle theme">
+            <span class="material-icons">{{ theme.isDark ? 'light_mode' : 'dark_mode' }}</span>
+          </button>
+
+          <!-- Cart -->
+          <a routerLink="/cart" class="icon-btn cart-btn" aria-label="Cart">
             <span class="cart-icon-wrap">
               <span class="material-icons">shopping_cart</span>
               @if ((cartCount$ | async) ?? 0; as count) {
@@ -57,6 +67,7 @@ import { User } from '../../../core/models/user.model';
 
           <div class="nav-divider"></div>
 
+          <!-- Auth: logged in vs guest -->
           @if (currentUser$ | async; as user) {
             <button class="user-btn" [matMenuTriggerFor]="userMenu">
               <span class="user-avatar">{{ getInitials(user.name) }}</span>
@@ -155,14 +166,14 @@ import { User } from '../../../core/models/user.model';
     /* ── Search ── */
     .search-bar {
       flex: 1; max-width: 600px; display: flex; align-items: center;
-      margin-left:14vh;
+      margin-left: 8vh;
       background: var(--gm-input-bg);
       border: 1.5px solid var(--gm-border);
       border-radius: 14px; padding: 0 6px 0 16px; height: 46px;
       transition: border-color 0.22s, background 0.22s, box-shadow 0.22s;
     }
     .search-bar:focus-within {
-      border-color: rgba(3, 3, 3, 0.5);
+      border-color: rgba(0,188,212,0.5);
       box-shadow: 0 0 0 3px rgba(0,188,212,0.08);
     }
     .search-icon {
@@ -213,6 +224,9 @@ import { User } from '../../../core/models/user.model';
       color: #00bcd4; background: rgba(0,188,212,0.1);
     }
     .icon-btn .material-icons { font-size: 23px; }
+    .theme-btn { transition: color 0.18s, background 0.18s, transform 0.3s; }
+    .theme-btn:hover { transform: rotate(22deg); }
+
     .cart-icon-wrap { position: relative; display: inline-flex; }
     .cart-count {
       position: absolute; top: -5px; right: -7px;
@@ -245,10 +259,8 @@ import { User } from '../../../core/models/user.model';
     }
     .user-name { font-size: 0.83rem; font-weight: 500; color: var(--gm-text); line-height: 1; }
     .chevron {
-      font-size: 16px !important;
-      color: var(--gm-text-sub);
-      opacity: 0.6;
-      line-height: 1;
+      font-size: 16px !important; color: var(--gm-text-sub);
+      opacity: 0.6; line-height: 1;
       display: flex; align-items: center;
     }
 
@@ -371,6 +383,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private store: Store,
     private router: Router,
+    public theme: ThemeService,
     private authService: AuthService
   ) {
     this.cartCount$ = this.store.select(selectCartCount);
@@ -390,8 +403,11 @@ export class NavbarComponent implements OnInit {
   }
 
   onSearch(): void {
-    if (this.searchQuery.trim()) {
-      this.router.navigate(['/search'], { queryParams: { q: this.searchQuery.trim() } });
+    const q = this.searchQuery.trim();
+    if (q) {
+      // Dispatch immediately so HTTP starts before router navigation completes
+      this.store.dispatch(ProductActions.loadProducts({ filters: { search: q, page: 0, size: 24 } }));
+      this.router.navigate(['/search'], { queryParams: { q } });
     }
   }
 }

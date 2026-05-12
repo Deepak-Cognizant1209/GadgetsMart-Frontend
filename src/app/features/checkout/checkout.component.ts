@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OrderService } from '../../core/services/order.service';
+import { AuthService } from '../../core/services/auth.service';
 import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selectors';
 import { CartActions } from '../../store/cart/cart.actions';
 
@@ -28,7 +29,7 @@ export class CheckoutComponent implements OnInit {
 
   countries = ['United States', 'Canada', 'United Kingdom', 'Australia', 'Germany', 'France', 'India'];
 
-  constructor(private fb: FormBuilder, private store: Store, private orderService: OrderService, private router: Router) {
+  constructor(private fb: FormBuilder, private store: Store, private orderService: OrderService, private authService: AuthService, private router: Router) {
     this.items$ = store.select(selectCartItems);
     this.total$ = store.select(selectCartTotal);
     this.shippingForm = this.fb.group({
@@ -48,8 +49,9 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void { this.store.dispatch(CartActions.loadCart()); }
 
-  getTax(subtotal: number): number { return +(subtotal * 0.1).toFixed(2); }
-  getTotal(subtotal: number): number { return +(subtotal + this.getTax(subtotal)).toFixed(2); }
+  getTax(subtotal: number): number { return +(subtotal * 0.18).toFixed(2); }
+  getShipping(): number { return 40; }
+  getTotal(subtotal: number): number { return +(subtotal + this.getTax(subtotal) + this.getShipping()).toFixed(2); }
 
   formatCard(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -59,12 +61,18 @@ export class CheckoutComponent implements OnInit {
 
   placeOrder(): void {
     this.placing = true;
+    const user = this.authService.currentUser;
     const addr = this.shippingForm.value as { fullName: string; street: string; city: string; state: string; zipCode: string; country: string };
     this.items$.subscribe(items => {
       this.orderService.placeOrder({
-        items: items.map(i => ({ productId: i.productId, quantity: i.quantity, color: i.selectedColor })),
-        shippingAddress: addr,
-        paymentMethod: 'card'
+        userId: user?.id || user?.email || '',
+        name: addr.fullName,
+        phone: user?.phone || '',
+        address: addr.street,
+        city: addr.city,
+        state: addr.state,
+        pincode: addr.zipCode,
+        items: items.map(i => ({ productId: i.productId, quantity: i.quantity }))
       }).subscribe(order => {
         this.store.dispatch(CartActions.clearCart());
         this.router.navigate(['/order-confirmation', order.id]);

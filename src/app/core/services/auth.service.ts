@@ -21,9 +21,12 @@ export class AuthService {
   currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {
+    // On app startup: if token + email exist in localStorage, restore session
     const email = localStorage.getItem(this.EMAIL_KEY);
     if (email && this.getToken()) {
+      // Show partial user immediately (name derived from email) while real fetch loads
       this.setPartialUser(email);
+      // Fetch full profile from backend in background
       this.fetchUser(email).subscribe({ error: () => {} });
     }
   }
@@ -35,7 +38,7 @@ export class AuthService {
           localStorage.setItem(this.TOKEN_KEY, res.token);
           localStorage.setItem(this.EMAIL_KEY, res.email);
           localStorage.setItem(this.ROLE_KEY,  res.role);
-          // Set user immediately so navbar updates without waiting for fetchUser
+          // Immediately update navbar with partial user while full fetch loads
           this.setPartialUser(res.email);
           // Fetch full profile (name, address etc.) in background
           this.fetchUser(res.email).subscribe({ error: () => {} });
@@ -63,9 +66,10 @@ export class AuthService {
       `${environment.apiUrl}/user_management_service/get_user_details`, { params }
     ).pipe(
       tap(res => {
-        if (res.status === 'success') {
-          // API returns the user object nested under "id" key
-          this.currentUserSubject.next(res.id);
+        if (res.status === 'success' && res.id) {
+          // res.id is the UserResponseDto object from the backend (StatusResponse.id field)
+          // Cast to User since UserResponseDto has the same shape as our User interface
+          this.currentUserSubject.next(res.id as User);
         }
       })
     );
@@ -77,8 +81,9 @@ export class AuthService {
     ).pipe(
       tap(res => {
         if (res.status === 'success') {
+          // Re-fetch fresh profile so currentUser$ and navbar reflect updated name etc.
           const email = this.getCurrentUserEmail();
-          if (email) this.fetchUser(email).subscribe();
+          if (email) this.fetchUser(email).subscribe({ error: () => {} });
         }
       })
     );

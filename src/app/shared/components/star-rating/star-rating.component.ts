@@ -9,7 +9,8 @@ import { Component, Input } from '@angular/core';
           {{ star <= fullStars ? '★' : (star === halfStar ? '⯨' : '☆') }}
         </span>
       }
-      @if (showCount) {
+      <span class="rating-val">{{ rating }}</span>
+      @if (showCount && count > 0) {
         <span class="count">({{ count }})</span>
       }
     </div>
@@ -18,7 +19,8 @@ import { Component, Input } from '@angular/core';
     .stars { display: inline-flex; align-items: center; gap: 1px; }
     .star { color: #9e9e9e; font-size: 16px; line-height: 1; }
     .star.full, .star.half { color: #ffc107; }
-    .count { color: #9e9e9e; font-size: 0.75rem; margin-left: 4px; }
+    .rating-val { color: #ffc107; font-size: 0.8rem; font-weight: 600; margin-left: 4px; }
+    .count { color: #9e9e9e; font-size: 0.75rem; margin-left: 2px; }
   `]
 })
 export class StarRatingComponent {

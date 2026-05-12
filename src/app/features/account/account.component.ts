@@ -1,22 +1,24 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { delay } from 'rxjs';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderService } from '../../core/services/order.service';
 import { AuthService } from '../../core/services/auth.service';
-import { Order, User } from '../../core/models';
+import { OrderResponse, User } from '../../core/models';
 
 @Component({
   selector: 'app-account',
-  imports: [ReactiveFormsModule, CurrencyPipe, DatePipe, MatTabsModule, MatProgressSpinnerModule],
+  imports: [ReactiveFormsModule, CurrencyPipe, DatePipe, RouterLink, MatTabsModule, MatProgressSpinnerModule],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  orders: Order[] = [];
+  orders: OrderResponse[] = [];
+  loadingOrders = false;
+  expandedOrderId: number | null = null;
   profileForm: FormGroup;
   saving = false;
   loadingProfile = true;
@@ -34,50 +36,74 @@ export class AccountComponent implements OnInit {
     private cdr: ChangeDetectorRef
   ) {
     this.profileForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: [{ value: '', disabled: true }],
-      phone: [''],
+      name:        ['', [Validators.required, Validators.minLength(2)]],
+      email:       [{ value: '', disabled: true }],
+      phone:       [''],
       addressLine: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      pincode: ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]]
+      city:        ['', Validators.required],
+      state:       ['', Validators.required],
+      pincode:     ['', [Validators.required, Validators.pattern(/^[0-9]{6}$/)]]
     });
   }
 
   ngOnInit(): void {
-    this.orderService.getMyOrders().subscribe(o => this.orders = o);
-
-    // Immediately fill form from cached user (available right after login)
     const cached = this.authService.currentUser;
     if (cached) {
       this.patchForm(cached);
       this.loadingProfile = false;
+      this.fetchOrders(cached.id || cached.email);
     }
 
-    // Fetch fresh full profile from API (overwrites with real DB data)
-    const email = this.authService.getCurrentUserEmail();
+    const email = cached?.email ?? this.authService.getCurrentUserEmail();
+
     if (email) {
       this.authService.fetchUser(email).subscribe({
         next: (res) => {
           this.patchForm(res.id);
           this.loadingProfile = false;
+          const userId = res.id.id || res.id.email;
+          this.fetchOrders(userId);
+          this.cdr.detectChanges();
         },
-        error: () => { this.loadingProfile = false; }
+        error: (err) => {
+          console.error('Failed to fetch user profile:', err);
+          this.loadingProfile = false;
+          // Still attempt to load orders using email as fallback userId
+          if (email) this.fetchOrders(email);
+          this.cdr.detectChanges();
+        }
       });
     } else {
       this.loadingProfile = false;
     }
   }
 
+  private fetchOrders(userId: string): void {
+    if (!userId) return;
+    this.loadingOrders = true;
+    this.orderService.getMyOrders(userId).subscribe({
+      next: (orders) => {
+        this.orders = orders;
+        this.loadingOrders = false;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Failed to fetch orders:', err);
+        this.loadingOrders = false;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
   private patchForm(u: User): void {
     this.profileForm.patchValue({
-      name: u.name,
-      email: u.email,
-      phone: u.phone ?? '',
-      addressLine: u.addressLine ?? '',
-      city: u.city ?? '',
-      state: u.state ?? '',
-      pincode: u.pincode ?? ''
+      name:        u.name         ?? '',
+      email:       u.email        ?? '',
+      phone:       u.phone        ?? '',
+      addressLine: u.addressLine  ?? '',
+      city:        u.city         ?? '',
+      state:       u.state        ?? '',
+      pincode:     u.pincode      ?? ''
     });
   }
 
@@ -89,19 +115,21 @@ export class AccountComponent implements OnInit {
   saveProfile(): void {
     if (this.profileForm.invalid) { this.profileForm.markAllAsTouched(); return; }
     this.saving = true;
+
     const v = this.profileForm.getRawValue() as {
-      name: string; email: string; phone: string; addressLine: string;
-      city: string; state: string; pincode: string;
+      name: string; email: string; phone: string;
+      addressLine: string; city: string; state: string; pincode: string;
     };
+
     this.authService.updateUser({
-      name: v.name,
-      email: v.email,
-      phone: v.phone,
+      name:        v.name,
+      email:       v.email,
+      phone:       v.phone,
       addressLine: v.addressLine,
-      city: v.city,
-      state: v.state,
-      pincode: v.pincode
-    }).pipe(delay(4000)).subscribe({
+      city:        v.city,
+      state:       v.state,
+      pincode:     v.pincode
+    }).subscribe({
       next: (res) => {
         this.saving = false;
         this.cdr.detectChanges();
@@ -118,6 +146,10 @@ export class AccountComponent implements OnInit {
         this.snack.open(msg, 'Close', { duration: 4000 });
       }
     });
+  }
+
+  toggleOrder(id: number): void {
+    this.expandedOrderId = this.expandedOrderId === id ? null : id;
   }
 
   logout(): void {

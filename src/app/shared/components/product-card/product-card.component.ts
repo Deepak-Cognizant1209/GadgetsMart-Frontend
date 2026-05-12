@@ -10,7 +10,8 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
   template: `
     <div class="product-card" [routerLink]="['/product', product.id]">
       <div class="card-image">
-        <img [src]="product.images[0]" [alt]="product.name" (error)="onImgError($event)" />
+        <img [src]="product.images.length ? product.images[0] : ''" [alt]="product.name"
+             loading="lazy" (error)="onImgError($event)" />
         @if (product.discountPrice) {
           <span class="badge-discount">SALE</span>
         }

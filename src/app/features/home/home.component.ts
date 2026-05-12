@@ -1,9 +1,10 @@
-import { Component, OnDestroy, NgZone } from '@angular/core';
+import { Component, OnDestroy, OnInit, NgZone } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CurrencyPipe } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { Product } from '../../core/models';
-import { MOCK_PRODUCTS } from '../../core/mock/mock-products';
+import { ProductService } from '../../core/services/product.service';
 import { CartActions } from '../../store/cart/cart.actions';
 import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
 import { ContactUsComponent } from '../../shared/components/contact-us/contact-us.component';
@@ -29,7 +30,7 @@ interface CategoryCard {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
   slides: HeroSlide[] = [
     {
       title: 'Pro Performance, Redefined',
@@ -70,17 +71,26 @@ export class HomeComponent implements OnDestroy {
 
   currentSlide = 0;
   prevSlide = -1;
-  featuredProducts: Product[] = [...MOCK_PRODUCTS]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 8);
+  featuredProducts: Product[] = [];
 
   private autoTimer: ReturnType<typeof setInterval> | undefined;
+  private featuredSub: Subscription | undefined;
 
-  constructor(private store: Store, private ngZone: NgZone) {
+  constructor(private store: Store, private ngZone: NgZone, private productService: ProductService) {
     this.startTimer();
   }
 
-  ngOnDestroy(): void { clearInterval(this.autoTimer); }
+  ngOnInit(): void {
+    this.featuredSub = this.productService.getFeaturedProducts().subscribe({
+      next: products => this.featuredProducts = products,
+      error: () => {}
+    });
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.autoTimer);
+    this.featuredSub?.unsubscribe();
+  }
 
   private startTimer(): void {
     this.ngZone.runOutsideAngular(() => {

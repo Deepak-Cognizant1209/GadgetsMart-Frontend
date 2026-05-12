@@ -4,14 +4,14 @@
     <div class="container">
       <a routerLink="/">Home</a>
       <span class="material-icons sep">chevron_right</span>
-      <span class="current">{{ categoryName }}</span>
+      <span class="current">{{ displayName }}</span>
     </div>
   </div>
 
   <div class="container layout">
     <!-- Header -->
     <div class="filter-header">
-      <h1 class="page-title">{{ categoryName }}</h1>
+      <h1 class="page-title">{{ displayName }}</h1>
       <div class="filter-controls">
         <button class="filter-toggle-btn" (click)="sidebarOpen = !sidebarOpen">
           <span class="material-icons">tune</span>

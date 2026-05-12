@@ -15,11 +15,11 @@
       </div>
     </div>
 
-    @if (loading) {
+    @if (loading$ | async) {
       <div class="product-grid">
         @for (s of skeletons; track $index) { <app-skeleton-card /> }
       </div>
-    } @else if (products.length === 0) {
+    } @else if ((products$ | async)?.length === 0) {
       <app-empty-state
         icon="search_off"
         title="No results found"
@@ -35,9 +35,9 @@
         <a routerLink="/category/Speakers" class="cat-link">Speakers</a>
       </div>
     } @else {
-      <p class="result-count">{{ products.length }} products found</p>
+      <p class="result-count">{{ (products$ | async)?.length }} products found</p>
       <div class="product-grid">
-        @for (product of products; track product.id) {
+        @for (product of (products$ | async)!; track product.id) {
           <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
         }
       </div>

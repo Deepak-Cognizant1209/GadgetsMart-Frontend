@@ -64,17 +64,22 @@
           <div class="order-summary">
             <h2>Order Summary</h2>
             <div class="summary-row"><span>Subtotal</span><span>{{ subtotal | currency:'INR':'symbol':'1.0-0' }}</span></div>
-            <div class="summary-row"><span>Shipping</span><span class="free">FREE</span></div>
-            <div class="summary-row"><span>Tax (10%)</span><span>{{ getTax(subtotal) | currency:'INR':'symbol':'1.0-0' }}</span></div>
+            <div class="summary-row"><span>Shipping</span><span>{{ getShipping() | currency:'INR':'symbol':'1.0-0' }}</span></div>
+            <div class="summary-row"><span>Tax (18% GST)</span><span>{{ getTax(subtotal) | currency:'INR':'symbol':'1.0-0' }}</span></div>
             <div class="summary-divider"></div>
             <div class="summary-row total-row">
               <span>Total</span>
               <span class="total-price">{{ getOrderTotal(subtotal) | currency:'INR':'symbol':'1.0-0' }}</span>
             </div>
-            <a routerLink="/checkout" class="checkout-btn">
-              <span class="material-icons">lock</span>
-              Proceed to Checkout
-            </a>
+            <button class="checkout-btn" (click)="checkout()" [disabled]="checkingOut">
+              @if (checkingOut) {
+                <mat-spinner diameter="18" />
+                <span>Placing Order...</span>
+              } @else {
+                <span class="material-icons">lock</span>
+                Proceed to Checkout
+              }
+            </button>
           </div>
         }
       </div>

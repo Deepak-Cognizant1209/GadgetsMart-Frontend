@@ -1,36 +1,35 @@
 export type OrderStatus = 'PENDING' | 'CONFIRMED' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED';
 
-export interface Address {
-  fullName: string;
-  street: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  country: string;
-}
-
-export interface OrderItem {
+export interface OrderItemResponse {
   productId: number;
-  productName: string;
   quantity: number;
-  price: number;
-  color: string;
+  priceAtPurchase: number;
 }
 
-export interface Order {
+export interface OrderResponse {
   id: number;
-  userId: number;
-  items: OrderItem[];
-  shippingAddress: Address;
-  subtotal: number;
-  tax: number;
-  total: number;
+  userId: string;
+  totalAmount: number;
   status: OrderStatus;
   createdAt: string;
+  items: OrderItemResponse[];
 }
 
-export interface PlaceOrderRequest {
-  items: { productId: number; quantity: number; color: string }[];
-  shippingAddress: Address;
-  paymentMethod: string;
+export interface OrderItemRequest {
+  productId: number;
+  quantity: number;
 }
+
+export interface OrderRequest {
+  userId: string;
+  name: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+  items: OrderItemRequest[];
+}
+
+export type Order = OrderResponse;
+export type PlaceOrderRequest = OrderRequest;

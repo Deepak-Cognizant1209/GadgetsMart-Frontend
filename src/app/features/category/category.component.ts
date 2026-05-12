@@ -10,7 +10,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Product, ProductFilter } from '../../core/models';
-import { MOCK_PRODUCTS } from '../../core/mock/mock-products';
 import { ProductActions } from '../../store/product/product.actions';
 import { selectProducts, selectProductLoading, selectProductsPage } from '../../store/product/product.selectors';
 import { CartActions } from '../../store/cart/cart.actions';
@@ -49,6 +48,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
   pageSize = 12;
 
   availableBrands: string[] = [];
+  private cachedBrands: string[] = [];
   ratingOptions = [
     { label: '4★ & above', value: 4 },
     { label: '3★ & above', value: 3 },
@@ -77,15 +77,27 @@ export class CategoryComponent implements OnInit, OnDestroy {
       this.selectedBrands = [];
       this.selectedRating = 0;
       this.sortBy = '';
-      this.availableBrands = [...new Set(
-        MOCK_PRODUCTS.filter(p => p.category === this.categoryName).map(p => p.brand)
-      )];
+      this.cachedBrands = [];
+      this.availableBrands = [];
       this.loadProducts();
     });
+
+    // Populate brand filter list from first unfiltered API response
+    this.store.select(selectProducts).pipe(takeUntil(this.destroy$)).subscribe(products => {
+      if (products.length > 0 && this.cachedBrands.length === 0) {
+        this.cachedBrands = [...new Set(products.map(p => p.brand))].sort();
+        this.availableBrands = this.cachedBrands;
+      }
+    });
+
     if (window.innerWidth < 768) this.sidebarOpen = false;
   }
 
   ngOnDestroy(): void { this.destroy$.next(); this.destroy$.complete(); }
+
+  get displayName(): string {
+    return this.categoryName === 'All' ? 'All Products' : this.categoryName;
+  }
 
   get activeFilterCount(): number {
     let count = 0;
