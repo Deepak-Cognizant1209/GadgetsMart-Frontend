@@ -34,29 +34,17 @@
           @for (item of order.items; track item.productId) {
             <div class="order-item">
               <div class="item-info">
-                <p class="item-name">{{ item.productName }}</p>
-                <p class="item-meta">{{ item.color }} × {{ item.quantity }}</p>
+                <p class="item-name">Product #{{ item.productId }}</p>
+                <p class="item-meta">Qty × {{ item.quantity }}</p>
               </div>
-              <span class="item-total">{{ item.price * item.quantity | currency:'INR':'symbol':'1.0-0' }}</span>
+              <span class="item-total">{{ item.priceAtPurchase * item.quantity | currency:'INR':'symbol':'1.0-0' }}</span>
             </div>
           }
         </div>
 
         <div class="totals-section">
-          <div class="total-row"><span>Subtotal</span><span>{{ order.subtotal | currency:'INR':'symbol':'1.0-0' }}</span></div>
           <div class="total-row"><span>Shipping</span><span class="free">FREE</span></div>
-          <div class="total-row"><span>Tax</span><span>{{ order.tax | currency:'INR':'symbol':'1.0-0' }}</span></div>
-          <div class="total-row grand"><span>Total</span><span class="grand-price">{{ order.total | currency:'INR':'symbol':'1.0-0' }}</span></div>
-        </div>
-
-        <div class="ship-section">
-          <h3>Shipping Address</h3>
-          <div class="address">
-            <p>{{ order.shippingAddress.fullName }}</p>
-            <p>{{ order.shippingAddress.street }}</p>
-            <p>{{ order.shippingAddress.city }}, {{ order.shippingAddress.state }} {{ order.shippingAddress.zipCode }}</p>
-            <p>{{ order.shippingAddress.country }}</p>
-          </div>
+          <div class="total-row grand"><span>Total</span><span class="grand-price">{{ order.totalAmount | currency:'INR':'symbol':'1.0-0' }}</span></div>
         </div>
 
         <div class="confirm-actions">
